@@ -1,0 +1,449 @@
+'use client';
+import React, { useState, useEffect } from 'react';
+
+export default function PortfolioLanding() {
+  const [activeMenu, setActiveMenu] = useState('Sobre mi');
+  const [isDark, setIsDark] = useState(false);
+  const [menuPosition, setMenuPosition] = useState({ x: 0, width: 0 });
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Array de imágenes - aquí puedes agregar las URLs de tus fotos
+  const images = [
+    'file:///Users/evelin/Documents/Imagenes/Foto4.jpeg', 
+    '/api/placeholder/600/600',
+    '/api/placeholder/600/600'
+  ];
+  
+  const menuItems = ['Sobre mi', 'Educacion', 'Conocimientos', 'Proyectos', 'Testimonios', 'Contacto'];
+  
+  useEffect(() => {
+    const activeElement = document.querySelector(`[data-menu="${activeMenu}"]`);
+    if (activeElement && activeElement.parentElement) {
+      const rect = activeElement.getBoundingClientRect();
+      const container = activeElement.parentElement.getBoundingClientRect();
+      setMenuPosition({
+        x: rect.left - container.left,
+        width: rect.width
+      });
+    }
+  }, [activeMenu]);
+
+  // Auto-rotate del carrusel cada 3 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-[#F5F3FA]'} transition-colors duration-300`}>
+      {/* Header/Navigation */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#F5F3FA]/85 backdrop-blur-sm shadow-sm">
+        <nav className="container mx-auto px-6 py-6">
+          <div className="flex items-center justify-between">
+            {/* Menu Items */}
+            <div className="flex items-center gap-8 relative">
+              {/* Animated oval background */}
+              <div 
+                className="absolute h-10 bg-[#DFC3EF] rounded-full transition-all duration-300 ease-out shadow-inner"
+                style={{
+                  left: `${menuPosition.x}px`,
+                  width: `${menuPosition.width + 32}px`,
+                  transform: 'translateX(-16px)'
+                }}
+              />
+              
+              {menuItems.map((item) => (
+                <button
+                  key={item}
+                  data-menu={item}
+                  onClick={() => setActiveMenu(item)}
+                  className={`relative z-10 px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                    activeMenu === item 
+                      ? 'text-gray-800' 
+                      : 'text-gray-600 hover:text-gray-800'
+                  }`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+
+            {/* Right side icons */}
+            <div className="flex items-center gap-4">
+              <button className="p-2 hover:bg-gray-200 rounded-lg transition-colors">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
+              </button>
+              <button 
+                onClick={() => setIsDark(!isDark)}
+                className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
+              >
+                {isDark ? (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        {/* Background with decorative lines */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-300 via-purple-200 to-blue-300 opacity-80">
+          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <path 
+              d="M 0 150 Q 200 100 400 150 T 800 150 L 800 250 Q 600 200 400 250 T 0 250 Z" 
+              fill="rgba(255,255,255,0.3)" 
+              className="animate-pulse"
+            />
+            <circle cx="500" cy="180" r="120" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
+            <circle cx="750" cy="120" r="80" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
+          </svg>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
+              "Work hard silently, let success make the noise."
+            </h1>
+            <p className="text-2xl text-white/90 font-light">Evelin Pulsara</p>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
+            {/* Image Carousel */}
+            <div className="lg:w-1/2 relative flex items-center justify-center">
+              <div className="absolute inset-0 bg-[#DFC3EF] rounded-full blur-3xl opacity-30 transform scale-110" />
+              
+              <div className="relative w-full max-w-xs mx-auto h-[320px]">
+                {images.map((img, index) => {
+                  const offset = (index - currentImageIndex + images.length) % images.length;
+                  
+                  let transform = '';
+                  let zIndex = 0;
+                  let opacity = 0;
+                  
+                  if (offset === 0) {
+                    transform = 'translateX(0) translateY(0) scale(1)';
+                    zIndex = 30;
+                    opacity = 1;
+                  } else if (offset === 1) {
+                    transform = 'translateX(50%) translateY(-8%) scale(0.88)';
+                    zIndex = 20;
+                    opacity = 0.6;
+                  } else if (offset === images.length - 1) {
+                    transform = 'translateX(-50%) translateY(-8%) scale(0.88)';
+                    zIndex = 10;
+                    opacity = 0.6;
+                  } else {
+                    transform = 'translateX(0) translateY(0) scale(0.5)';
+                    zIndex = 0;
+                    opacity = 0;
+                  }
+                  
+                  return (
+                    <div
+                      key={index}
+                      className="absolute inset-0 transition-all duration-700 ease-in-out"
+                      style={{
+                        transform,
+                        zIndex,
+                        opacity
+                      }}
+                    >
+                      <div className="w-full h-full rounded-[20px] overflow-hidden shadow-2xl bg-gradient-to-br from-purple-200 to-blue-200">
+                        <img 
+                          src={img} 
+                          alt={`Foto ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* Indicadores de puntos */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-40 flex gap-2">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === currentImageIndex 
+                          ? 'bg-purple-400 w-6' 
+                          : 'bg-gray-300 hover:bg-purple-300'
+                      }`}
+                      aria-label={`Ir a imagen ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="lg:w-1/2 relative">
+              <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#DFC3EF] rounded-full opacity-20 blur-2xl" />
+              
+              <div className="relative">
+                <div className="inline-block mb-6 px-6 py-3 bg-[#DFC3EF] rounded-full">
+                  <h2 className="text-2xl font-semibold text-gray-800">Sobre mi</h2>
+                </div>
+                
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  Soy estudiante de Ingeniería de Software, con interés en el desarrollo de aplicaciones y videojuegos. Busco fortalecer mis conocimientos, aportar soluciones y crecer profesionalmente.
+                </p>
+                
+                <p className="text-gray-700 leading-relaxed">
+                  Me interesa el área de desarrollo frontend, con entusiasmo en la creación de interfaces dinámicas y en el diseño de videojuegos. Me definen la creatividad, la curiosidad y la perseverancia, cualidades que aplico en mis proyectos académicos y personales. Además de programar, disfruto pintar, leer, cocinar y jugar Roblox, actividades que alimentan mi imaginación y refuerzan mi capacidad de análisis. Aspiro a crecer profesionalmente y aportar soluciones innovadoras que integren técnica, arte y experiencias significativas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Educación */}
+      <section className="py-20 bg-[#F5F3FA]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Educación</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-bold mb-2">Técnico en sistemas</h3>
+                <p className="text-gray-600 mb-4">Terminado</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white p-1">
+                    <img src="/api/placeholder/40/40" alt="Logo SistemPlus" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <p className="font-medium">SistemPlus</p>
+                    <p className="text-sm text-gray-500">Date</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-bold mb-2">Técnico en electrónica</h3>
+                <p className="text-gray-600 mb-4">Terminado</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white p-1">
+                    <img src="/api/placeholder/40/40" alt="Logo Cinar Sistemas" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <p className="font-medium">Cinar Sistemas</p>
+                    <p className="text-sm text-gray-500">Date</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-bold mb-2">Ingeniería de software</h3>
+                <p className="text-gray-600 mb-4">Activo</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white p-1">
+                    <img src="/api/placeholder/40/40" alt="Logo Universidad Cooperativa" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <p className="font-medium">Universidad Cooperativa</p>
+                    <p className="text-sm text-gray-500">----</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Conocimientos */}
+      <section className="py-20 bg-[#F5F3FA]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Conocimientos</h2>
+            <div className="space-y-8">
+              <div className="bg-[#D6C8F0] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6">
+                <div className="w-20 h-20 rounded-lg bg-white p-2">
+                  <img src="/api/placeholder/80/80" alt="Java Logo" className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Java</h3>
+                  <p className="text-gray-700">
+                    Tengo conocimientos en programación orientada a objetos, creación de aplicaciones y estructuras de datos. He trabajado en proyectos académicos donde implementé sistemas de gestión y bases de datos, aplicando buenas prácticas de desarrollo.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-[#C7D9F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6">
+                <div className="w-20 h-20 rounded-lg bg-white p-2">
+                  <img src="/api/placeholder/80/80" alt="Python Logo" className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Python</h3>
+                  <p className="text-gray-700">
+                    Uso Python para resolver problemas, practicar algoritmos y trabajar con estructuras de datos. También lo empleo en proyectos de automatización y ejercicios que fortalecen mi lógica de programación.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-[#A9B7F2] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6">
+                <div className="w-20 h-20 rounded-lg bg-white p-2">
+                  <img src="/api/placeholder/80/80" alt="Unity Logo" className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Unity</h3>
+                  <p className="text-gray-700">
+                    Me interesa el desarrollo de videojuegos y la creación de experiencias interactivas. He practicado con Unity para aprender sobre diseño de entornos, animaciones y lógica de interacción dentro de juegos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Proyectos */}
+      <section className="py-20 bg-[#F5F3FA]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Proyectos</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Proyecto 1: Boleto de avión */}
+              <div className="bg-[#C7D9F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div className="mb-4">
+                  <img src="/api/placeholder/200/150" alt="Boleto de avión" className="w-full h-32 object-cover rounded-lg" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Boleto de avión</h3>
+                <p className="text-gray-600 mb-2">Link GitHub:</p>
+                <ul className="list-disc pl-5 text-gray-700">
+                  <li><a href="https://github.com/evelinpulsara/Boleto.git" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://github.com/evelinpulsara/Boleto.git</a></li>
+                </ul>
+              </div>
+
+              {/* Proyecto 2: Interfaz */}
+              <div className="bg-[#D6C8F0] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div className="mb-4">
+                  <img src="/api/placeholder/200/150" alt="Interfaz" className="w-full h-32 object-cover rounded-lg" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Interfaz</h3>
+                <p className="text-gray-600 mb-2">Link GitHub:</p>
+                <ul className="list-disc pl-5 text-gray-700">
+                  <li><a href="https://github.com/evelinpulsara/Taller_Interfaz-.git" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://github.com/evelinpulsara/Taller_Interfaz-.git</a></li>
+                </ul>
+              </div>
+
+              {/* Proyecto 3: Formulario */}
+              <div className="bg-[#B18BE8] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div className="mb-4">
+                  <img src="/api/placeholder/200/150" alt="Formulario" className="w-full h-32 object-cover rounded-lg" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Formulario</h3>
+                <p className="text-gray-600 mb-2">Link GitHub:</p>
+                <ul className="list-disc pl-5 text-gray-700">
+                  <li><a href="https://github.com/evelinpulsara/Cuarto-Taller.git" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://github.com/evelinpulsara/Cuarto-Taller.git</a></li>
+                </ul>
+              </div>
+
+              {/* Proyecto 4: Title 1 */}
+              <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div className="mb-4 flex justify-center">
+                  <img src="/api/placeholder/80/80" alt="GitHub Logo" className="w-20 h-20 object-contain" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Title</h3>
+                <p className="text-gray-600 mb-2">Link GitHub:</p>
+                <ul className="list-disc pl-5 text-gray-700">
+                  <li>-</li>
+                </ul>
+              </div>
+
+              {/* Proyecto 5: Title 2 */}
+              <div className="bg-[#EFD8F6] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div className="mb-4 flex justify-center">
+                  <img src="/api/placeholder/80/80" alt="GitHub Logo" className="w-20 h-20 object-contain" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Title</h3>
+                <p className="text-gray-600 mb-2">Link GitHub:</p>
+                <ul className="list-disc pl-5 text-gray-700">
+                  <li>-</li>
+                </ul>
+              </div>
+
+              {/* Proyecto 6: Title 3 */}
+              <div className="bg-[#A9B7F2] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                <div className="mb-4 flex justify-center">
+                  <img src="/api/placeholder/80/80" alt="GitHub Logo" className="w-20 h-20 object-contain" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Title</h3>
+                <p className="text-gray-600 mb-2">Link GitHub:</p>
+                <ul className="list-disc pl-5 text-gray-700">
+                  <li>-</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Testimonios */}
+      <section className="py-20 bg-[#F5F3FA]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Testimonios</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <p className="text-gray-700 italic mb-4">
+                  “Evelin es una persona muy dedicada y creativa. Su pasión por el desarrollo de software se refleja en cada proyecto que realiza.”
+                </p>
+                <p className="font-medium">— Profesor de Programación</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <p className="text-gray-700 italic mb-4">
+                  “Trabajar con Evelin fue una experiencia increíble. Siempre busca mejorar y aportar ideas innovadoras.”
+                </p>
+                <p className="font-medium">— Compañero de equipo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Contacto */}
+      <section className="py-20 bg-[#F5F3FA]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Contacto</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 className="text-xl font-bold mb-4">Información de contacto</h3>
+                <p className="text-gray-700 mb-2"><strong>Email:</strong> evelinpulsara@example.com</p>
+                <p className="text-gray-700 mb-2"><strong>Teléfono:</strong> +57 300 123 4567</p>
+                <p className="text-gray-700"><strong>Ubicación:</strong> Colombia</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 className="text-xl font-bold mb-4">Redes sociales</h3>
+                <div className="space-y-3">
+                  <a href="#" className="block text-blue-600 hover:underline">GitHub</a>
+                  <a href="#" className="block text-blue-600 hover:underline">LinkedIn</a>
+                  <a href="#" className="block text-blue-600 hover:underline">Instagram</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
