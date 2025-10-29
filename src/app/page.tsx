@@ -13,11 +13,6 @@ export default function PortfolioLanding() {
     '/imagenes/Foto4.jpeg',
     '/imagenes/Foto5.jpeg',
     '/imagenes/Foto6.jpeg'
-    // Puedes agregar más imágenes aquí, por ejemplo:
-    // '/imagenes/dark.jpg',
-    // '/imagenes/esta.jpg',
-    // '/imagenes/Foto2.jpg',
-    // '/imagenes/Foto3.jpg',
   ];
 
   const menuItems = ['Sobre mi', 'Educacion', 'Conocimientos', 'Proyectos', 'Testimonios', 'Contacto'];
@@ -82,7 +77,7 @@ export default function PortfolioLanding() {
                   className={`relative z-10 px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                     activeMenu === item
                       ? 'text-gray-800'
-                      : 'text-gray-600 hover:text-gray-800'
+                      : 'text-gray-600 hover:text-gray-800 hover:bg-[#e3d3ed] rounded-full shadow-inner'
                   }`}
                 >
                   {item}
@@ -398,12 +393,19 @@ export default function PortfolioLanding() {
               {/* Proyecto 4: Title 1 */}
               <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                 <div className="mb-4 flex justify-center">
-                  <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Logo" className="w-20 h-20 object-contain" />
+                  <a
+                    href="https://responsive-design-indol.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full h-32 rounded-lg overflow-hidden"
+                  >
+                    <img src="imagenes/netflix.png" alt="Vista previa de Interfaz" className="w-full h-full object-cover" />
+                  </a>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Title</h3>
+                <h3 className="text-xl font-bold mb-2">Interfaz</h3>
                 <p className="text-gray-600 mb-2">Link GitHub:</p>
                 <ul className="list-disc pl-5 text-gray-700">
-                  <li>-</li>
+                  <li><a href="https://github.com/evelinpulsara/responsive-design.git" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Interfaz tipo Netflix</a></li>
                 </ul>
               </div>
 
