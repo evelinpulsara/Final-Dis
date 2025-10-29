@@ -132,7 +132,7 @@ export default function PortfolioLanding() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-6 drop-shadow-lg">
-              "Work hard silently, let success make the noise."
+              &quot;Work hard silently, let success make the noise.&quot;
             </h1>
             <p className="text-2xl text-white/90 font-light">Evelin Pulsara</p>
           </div>
