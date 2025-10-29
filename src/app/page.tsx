@@ -234,103 +234,103 @@ export default function PortfolioLanding() {
         </div>
       </section>
 
-      {/* Sección Educación */}
-      <section id="educacion" className="py-20 bg-[#F5F3FA]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Educación</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold mb-2">Técnico en sistemas</h3>
-                <p className="text-gray-600 mb-4">Terminado</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white p-1">
-                    <img src="/api/placeholder/40/40" alt="Logo SistemPlus" className="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <p className="font-medium">SistemPlus</p>
-                    <p className="text-sm text-gray-500">Date</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold mb-2">Técnico en electrónica</h3>
-                <p className="text-gray-600 mb-4">Terminado</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white p-1">
-                    <img src="/api/placeholder/40/40" alt="Logo Cinar Sistemas" className="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Cinar Sistemas</p>
-                    <p className="text-sm text-gray-500">Date</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold mb-2">Ingeniería de software</h3>
-                <p className="text-gray-600 mb-4">Activo</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white p-1">
-                    <img src="/api/placeholder/40/40" alt="Logo Universidad Cooperativa" className="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Universidad Cooperativa</p>
-                    <p className="text-sm text-gray-500">----</p>
-                  </div>
-                </div>
-              </div>
+{/* Sección Educación */}
+<section id="educacion" className="py-20 bg-[#F5F3FA]">
+  <div className="container mx-auto px-6">
+    <div className="max-w-6xl mx-auto">
+      <h2 className="text-3xl font-bold text-center mb-12">Educación</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <h3 className="text-xl font-bold mb-2">Técnico en sistemas</h3>
+          <p className="text-gray-600 mb-4">Terminado</p>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-white p-1">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnKbc9YpxUwySM6rEAv_K3jfJgW6lZDtglGw&s" alt="Logo SistemPlus" className="w-full h-full object-contain" />
+            </div>
+            <div>
+              <p className="font-medium">SistemPlus</p>
+              <p className="text-sm text-gray-500">Date</p>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Sección Conocimientos */}
-      <section id="conocimientos" className="py-20 bg-[#F5F3FA]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Conocimientos</h2>
-            <div className="space-y-8">
-              <div className="bg-[#D6C8F0] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6">
-                <div className="w-20 h-20 rounded-lg bg-white p-2">
-                  <img src="/api/placeholder/80/80" alt="Java Logo" className="w-full h-full object-contain" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Java</h3>
-                  <p className="text-gray-700">
-                    Tengo conocimientos en programación orientada a objetos, creación de aplicaciones y estructuras de datos. He trabajado en proyectos académicos donde implementé sistemas de gestión y bases de datos, aplicando buenas prácticas de desarrollo.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-[#C7D9F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6">
-                <div className="w-20 h-20 rounded-lg bg-white p-2">
-                  <img src="/api/placeholder/80/80" alt="Python Logo" className="w-full h-full object-contain" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Python</h3>
-                  <p className="text-gray-700">
-                    Uso Python para resolver problemas, practicar algoritmos y trabajar con estructuras de datos. También lo empleo en proyectos de automatización y ejercicios que fortalecen mi lógica de programación.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-[#A9B7F2] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6">
-                <div className="w-20 h-20 rounded-lg bg-white p-2">
-                  <img src="/api/placeholder/80/80" alt="Unity Logo" className="w-full h-full object-contain" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Unity</h3>
-                  <p className="text-gray-700">
-                    Me interesa el desarrollo de videojuegos y la creación de experiencias interactivas. He practicado con Unity para aprender sobre diseño de entornos, animaciones y lógica de interacción dentro de juegos.
-                  </p>
-                </div>
-              </div>
+        <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <h3 className="text-xl font-bold mb-2">Técnico en electrónica</h3>
+          <p className="text-gray-600 mb-4">Terminado</p>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-white p-1">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVTULg_1QeoH6jdICwT-C1bj7VMJU9sXCg8g&s" alt="Logo Cinar Sistemas" className="w-full h-full object-contain" />
+            </div>
+            <div>
+              <p className="font-medium">Cinar Sistemas</p>
+              <p className="text-sm text-gray-500">Date</p>
             </div>
           </div>
         </div>
-      </section>
+
+        <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <h3 className="text-xl font-bold mb-2">Ingeniería de software</h3>
+          <p className="text-gray-600 mb-4">Activo</p>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-white p-1">
+              <img src="4de_Colombia_logo.svg." alt="Logo Universidad Cooperativa" className="w-full h-full object-contain" />
+            </div>
+            <div>
+              <p className="font-medium">Universidad Cooperativa</p>
+              <p className="text-sm text-gray-500">----</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Sección Conocimientos */}
+<section id="conocimientos" className="py-20 bg-[#F5F3FA]">
+  <div className="container mx-auto px-6">
+    <div className="max-w-6xl mx-auto">
+      <h2 className="text-3xl font-bold text-center mb-12">Conocimientos</h2>
+      <div className="space-y-8">
+        <div className="bg-[#D6C8F0] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6">
+          <div className="w-20 h-20 rounded-lg bg-white p-2">
+            <img src="https://images.icon-icons.com/2108/PNG/512/java_icon_130901.png" alt="Java Logo" className="w-full h-full object-contain" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-2">Java</h3>
+            <p className="text-gray-700">
+              Tengo conocimientos en programación orientada a objetos, creación de aplicaciones y estructuras de datos. He trabajado en proyectos académicos donde implementé sistemas de gestión y bases de datos, aplicando buenas prácticas de desarrollo.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-[#C7D9F7] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6">
+          <div className="w-20 h-20 rounded-lg bg-white p-2">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="Python Logo" className="w-full h-full object-contain" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-2">Python</h3>
+            <p className="text-gray-700">
+              Uso Python para resolver problemas, practicar algoritmos y trabajar con estructuras de datos. También lo empleo en proyectos de automatización y ejercicios que fortalecen mi lógica de programación.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-[#A9B7F2] p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6">
+          <div className="w-20 h-20 rounded-lg bg-white p-2">
+            <img src="https://cdn.worldvectorlogo.com/logos/unity-69.svg" alt="Unity Logo" className="w-full h-full object-contain" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-2">Unity</h3>
+            <p className="text-gray-700">
+              Me interesa el desarrollo de videojuegos y la creación de experiencias interactivas. He practicado con Unity para aprender sobre diseño de entornos, animaciones y lógica de interacción dentro de juegos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Sección Proyectos */}
       <section id="proyectos" className="py-20 bg-[#F5F3FA]">
@@ -427,7 +427,7 @@ export default function PortfolioLanding() {
                 </p>
                 <div className="flex items-center gap-3">
                   <img
-                    src="https://randomuser.me/api/portraits/women/65.jpg"
+                    src="https://img.wattpad.com/fc3990959c5ad87193d752998c6193fcd6ee6dab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f7a3031524e7747703436364f6f413d3d2d32332e313534303133313231666639643336623835373439393631333230342e6a7067"
                     alt="Andrea López"
                     className="w-10 h-10 rounded-full object-cover"
                   />
