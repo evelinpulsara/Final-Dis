@@ -6,16 +6,22 @@ export default function PortfolioLanding() {
   const [isDark, setIsDark] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, width: 0 });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  // Array de imágenes - aquí puedes agregar las URLs de tus fotos
+
+  // Array de imágenes - RUTAS RELATIVAS desde la carpeta public/imagenes
+  // Asegúrate de que los nombres de archivo coincidan exactamente.
   const images = [
-    'file:///Users/evelin/Documents/Imagenes/Foto4.jpeg', 
-    '/api/placeholder/600/600',
-    '/api/placeholder/600/600'
+    '/imagenes/Foto4.jpeg',
+    '/imagenes/Foto5.jpeg',
+    '/imagenes/Foto6.jpeg'
+    // Puedes agregar más imágenes aquí, por ejemplo:
+    // '/imagenes/dark.jpg',
+    // '/imagenes/esta.jpg',
+    // '/imagenes/Foto2.jpg',
+    // '/imagenes/Foto3.jpg',
   ];
-  
+
   const menuItems = ['Sobre mi', 'Educacion', 'Conocimientos', 'Proyectos', 'Testimonios', 'Contacto'];
-  
+
   useEffect(() => {
     const activeElement = document.querySelector(`[data-menu="${activeMenu}"]`);
     if (activeElement && activeElement.parentElement) {
@@ -33,9 +39,18 @@ export default function PortfolioLanding() {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
     }, 3000);
-    
+
     return () => clearInterval(interval);
   }, [images.length]);
+
+  // Función para manejar el scroll a la sección
+  const scrollToSection = (sectionId: string) => {
+    if (!sectionId) return;
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-[#F5F3FA]'} transition-colors duration-300`}>
@@ -46,7 +61,7 @@ export default function PortfolioLanding() {
             {/* Menu Items */}
             <div className="flex items-center gap-8 relative">
               {/* Animated oval background */}
-              <div 
+              <div
                 className="absolute h-10 bg-[#DFC3EF] rounded-full transition-all duration-300 ease-out shadow-inner"
                 style={{
                   left: `${menuPosition.x}px`,
@@ -54,15 +69,19 @@ export default function PortfolioLanding() {
                   transform: 'translateX(-16px)'
                 }}
               />
-              
+
               {menuItems.map((item) => (
                 <button
                   key={item}
                   data-menu={item}
-                  onClick={() => setActiveMenu(item)}
+                  onClick={() => {
+                    setActiveMenu(item);
+                    // Scroll a la sección correspondiente
+                    scrollToSection(item.toLowerCase().replace(/\s+/g, ''));
+                  }}
                   className={`relative z-10 px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                    activeMenu === item 
-                      ? 'text-gray-800' 
+                    activeMenu === item
+                      ? 'text-gray-800'
                       : 'text-gray-600 hover:text-gray-800'
                   }`}
                 >
@@ -78,7 +97,7 @@ export default function PortfolioLanding() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                 </svg>
               </button>
-              <button 
+              <button
                 onClick={() => setIsDark(!isDark)}
                 className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
               >
@@ -97,19 +116,17 @@ export default function PortfolioLanding() {
         </nav>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero Section - Modificado para usar imagen */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Background with decorative lines */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-300 via-purple-200 to-blue-300 opacity-80">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <path 
-              d="M 0 150 Q 200 100 400 150 T 800 150 L 800 250 Q 600 200 400 250 T 0 250 Z" 
-              fill="rgba(255,255,255,0.3)" 
-              className="animate-pulse"
-            />
-            <circle cx="500" cy="180" r="120" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
-            <circle cx="750" cy="120" r="80" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
-          </svg>
+        {/* Fondo de imagen */}
+        <div className="absolute inset-0">
+          <img
+            src={isDark ? '/imagenes/dark.jpg' : '/imagenes/esta.jpeg'}
+            alt="Hero Background"
+            className="w-full h-full object-cover"
+          />
+          {/* Overlay para mejorar la legibilidad del texto */}
+          <div className={`absolute inset-0 ${isDark ? 'bg-black/40' : 'bg-white/40'}`}></div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -123,21 +140,21 @@ export default function PortfolioLanding() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 relative">
+      <section id="sobremi" className="py-20 relative">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
             {/* Image Carousel */}
             <div className="lg:w-1/2 relative flex items-center justify-center">
               <div className="absolute inset-0 bg-[#DFC3EF] rounded-full blur-3xl opacity-30 transform scale-110" />
-              
+
               <div className="relative w-full max-w-xs mx-auto h-[320px]">
                 {images.map((img, index) => {
                   const offset = (index - currentImageIndex + images.length) % images.length;
-                  
+
                   let transform = '';
                   let zIndex = 0;
                   let opacity = 0;
-                  
+
                   if (offset === 0) {
                     transform = 'translateX(0) translateY(0) scale(1)';
                     zIndex = 30;
@@ -155,7 +172,7 @@ export default function PortfolioLanding() {
                     zIndex = 0;
                     opacity = 0;
                   }
-                  
+
                   return (
                     <div
                       key={index}
@@ -167,8 +184,8 @@ export default function PortfolioLanding() {
                       }}
                     >
                       <div className="w-full h-full rounded-[20px] overflow-hidden shadow-2xl bg-gradient-to-br from-purple-200 to-blue-200">
-                        <img 
-                          src={img} 
+                        <img
+                          src={img}
                           alt={`Foto ${index + 1}`}
                           className="w-full h-full object-cover"
                         />
@@ -184,8 +201,8 @@ export default function PortfolioLanding() {
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`w-2 h-2 rounded-full transition-all ${
-                        index === currentImageIndex 
-                          ? 'bg-purple-400 w-6' 
+                        index === currentImageIndex
+                          ? 'bg-purple-400 w-6'
                           : 'bg-gray-300 hover:bg-purple-300'
                       }`}
                       aria-label={`Ir a imagen ${index + 1}`}
@@ -198,16 +215,16 @@ export default function PortfolioLanding() {
             {/* Content */}
             <div className="lg:w-1/2 relative">
               <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#DFC3EF] rounded-full opacity-20 blur-2xl" />
-              
+
               <div className="relative">
                 <div className="inline-block mb-6 px-6 py-3 bg-[#DFC3EF] rounded-full">
                   <h2 className="text-2xl font-semibold text-gray-800">Sobre mi</h2>
                 </div>
-                
+
                 <p className="text-gray-700 mb-6 leading-relaxed">
                   Soy estudiante de Ingeniería de Software, con interés en el desarrollo de aplicaciones y videojuegos. Busco fortalecer mis conocimientos, aportar soluciones y crecer profesionalmente.
                 </p>
-                
+
                 <p className="text-gray-700 leading-relaxed">
                   Me interesa el área de desarrollo frontend, con entusiasmo en la creación de interfaces dinámicas y en el diseño de videojuegos. Me definen la creatividad, la curiosidad y la perseverancia, cualidades que aplico en mis proyectos académicos y personales. Además de programar, disfruto pintar, leer, cocinar y jugar Roblox, actividades que alimentan mi imaginación y refuerzan mi capacidad de análisis. Aspiro a crecer profesionalmente y aportar soluciones innovadoras que integren técnica, arte y experiencias significativas.
                 </p>
@@ -218,7 +235,7 @@ export default function PortfolioLanding() {
       </section>
 
       {/* Sección Educación */}
-      <section className="py-20 bg-[#F5F3FA]">
+      <section id="educacion" className="py-20 bg-[#F5F3FA]">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Educación</h2>
@@ -270,7 +287,7 @@ export default function PortfolioLanding() {
       </section>
 
       {/* Sección Conocimientos */}
-      <section className="py-20 bg-[#F5F3FA]">
+      <section id="conocimientos" className="py-20 bg-[#F5F3FA]">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Conocimientos</h2>
@@ -316,7 +333,7 @@ export default function PortfolioLanding() {
       </section>
 
       {/* Sección Proyectos */}
-      <section className="py-20 bg-[#F5F3FA]">
+      <section id="proyectos" className="py-20 bg-[#F5F3FA]">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Proyectos</h2>
@@ -329,7 +346,7 @@ export default function PortfolioLanding() {
                 <h3 className="text-xl font-bold mb-2">Boleto de avión</h3>
                 <p className="text-gray-600 mb-2">Link GitHub:</p>
                 <ul className="list-disc pl-5 text-gray-700">
-                  <li><a href="https://github.com/evelinpulsara/Boleto.git" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://github.com/evelinpulsara/Boleto.git</a></li>
+                  <li><a href="https://github.com/evelinpulsara/Boleto.git  " target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://github.com/evelinpulsara/Boleto.git  </a></li>
                 </ul>
               </div>
 
@@ -341,7 +358,7 @@ export default function PortfolioLanding() {
                 <h3 className="text-xl font-bold mb-2">Interfaz</h3>
                 <p className="text-gray-600 mb-2">Link GitHub:</p>
                 <ul className="list-disc pl-5 text-gray-700">
-                  <li><a href="https://github.com/evelinpulsara/Taller_Interfaz-.git" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://github.com/evelinpulsara/Taller_Interfaz-.git</a></li>
+                  <li><a href="https://github.com/evelinpulsara/Taller_Interfaz-.git  " target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://github.com/evelinpulsara/Taller_Interfaz-.git  </a></li>
                 </ul>
               </div>
 
@@ -353,7 +370,7 @@ export default function PortfolioLanding() {
                 <h3 className="text-xl font-bold mb-2">Formulario</h3>
                 <p className="text-gray-600 mb-2">Link GitHub:</p>
                 <ul className="list-disc pl-5 text-gray-700">
-                  <li><a href="https://github.com/evelinpulsara/Cuarto-Taller.git" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://github.com/evelinpulsara/Cuarto-Taller.git</a></li>
+                  <li><a href="https://github.com/evelinpulsara/Cuarto-Taller.git  " target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://github.com/evelinpulsara/Cuarto-Taller.git  </a></li>
                 </ul>
               </div>
 
@@ -398,7 +415,7 @@ export default function PortfolioLanding() {
       </section>
 
       {/* Sección Testimonios */}
-      <section className="py-20 bg-[#F5F3FA]">
+      <section id="testimonios" className="py-20 bg-[#F5F3FA]">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Testimonios</h2>
@@ -421,7 +438,7 @@ export default function PortfolioLanding() {
       </section>
 
       {/* Sección Contacto */}
-      <section className="py-20 bg-[#F5F3FA]">
+      <section id="contacto" className="py-20 bg-[#F5F3FA]">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Contacto</h2>
