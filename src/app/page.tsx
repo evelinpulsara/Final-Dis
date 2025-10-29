@@ -414,49 +414,211 @@ export default function PortfolioLanding() {
         </div>
       </section>
 
-      {/* Sección Testimonios */}
+      {/* Sección Testimonios - Diseño nuevo */}
       <section id="testimonios" className="py-20 bg-[#F5F3FA]">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Testimonios</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                <p className="text-gray-700 italic mb-4">
-                  “Evelin es una persona muy dedicada y creativa. Su pasión por el desarrollo de software se refleja en cada proyecto que realiza.”
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Cuadro 1 */}
+              <div className="bg-[#D6C8F0] p-6 rounded-xl shadow-md border border-gray-300">
+                <p className="text-gray-800 italic mb-4">
+                  “Demuestra gran dedicación en cada proyecto, siempre busca soluciones creativas y bien estructuradas.”
                 </p>
-                <p className="font-medium">— Profesor de Programación</p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/65.jpg"
+                    alt="Andrea López"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium text-[#7A4FBF]">Andrea López, Docente</p>
+                    <p className="text-sm text-[#5E5A72]">15/04/2025</p>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                <p className="text-gray-700 italic mb-4">
-                  “Trabajar con Evelin fue una experiencia increíble. Siempre busca mejorar y aportar ideas innovadoras.”
+
+              {/* Cuadro 2 */}
+              <div className="bg-[#C7D9F7] p-6 rounded-xl shadow-md border border-gray-300">
+                <p className="text-gray-800 italic mb-4">
+                  “Trabajar con ella en equipo es inspirador; aporta ideas claras y mantiene una actitud positiva y profesional.”
                 </p>
-                <p className="font-medium">— Compañero de equipo</p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="Carlos Mendoza"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium text-[#7A4FBF]">Carlos Mendoza, Compañero</p>
+                    <p className="text-sm text-[#5E5A72]">02/05/2025</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cuadro 3 */}
+              <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md border border-gray-300">
+                <p className="text-gray-800 italic mb-4">
+                  “Tiene la habilidad de unir lo técnico con lo humano, logrando resultados sólidos y con valor práctico.”
+                </p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                    alt="Laura Jiménez"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium text-[#7A4FBF]">Laura Jiménez, Profesora</p>
+                    <p className="text-sm text-[#5E5A72]">20/05/2025</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cuadro 4 */}
+              <div className="bg-[#F0EEF9] p-6 rounded-xl shadow-md border border-gray-300">
+                <p className="text-gray-800 italic mb-4">
+                  “Quote”
+                </p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/65.jpg"
+                    alt="Title"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium text-[#7A4FBF]">Title</p>
+                    <p className="text-sm text-[#5E5A72]">00/00/00</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cuadro 5 */}
+              <div className="bg-[#F0EEF9] p-6 rounded-xl shadow-md border border-gray-300">
+                <p className="text-gray-800 italic mb-4">
+                  “Quote”
+                </p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="Title"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium text-[#7A4FBF]">Title</p>
+                    <p className="text-sm text-[#5E5A72]">00/00/00</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Cuadro 6 */}
+              <div className="bg-[#F0EEF9] p-6 rounded-xl shadow-md border border-gray-300">
+                <p className="text-gray-800 italic mb-4">
+                  “Quote”
+                </p>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/44.jpg"
+                    alt="Title"
+                    className="w-10 h-10 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-medium text-[#7A4FBF]">Title</p>
+                    <p className="text-sm text-[#5E5A72]">00/00/00</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sección Contacto */}
-      <section id="contacto" className="py-20 bg-[#F5F3FA]">
+      {/* Sección Contacto - Diseño nuevo */}
+      <section id="contacto" className="py-20 bg-[#E9E2F7]">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Contacto</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                <h3 className="text-xl font-bold mb-4">Información de contacto</h3>
-                <p className="text-gray-700 mb-2"><strong>Email:</strong> evelinpulsara@example.com</p>
-                <p className="text-gray-700 mb-2"><strong>Teléfono:</strong> +57 300 123 4567</p>
-                <p className="text-gray-700"><strong>Ubicación:</strong> Colombia</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                <h3 className="text-xl font-bold mb-4">Redes sociales</h3>
-                <div className="space-y-3">
-                  <a href="#" className="block text-blue-600 hover:underline">GitHub</a>
-                  <a href="#" className="block text-blue-600 hover:underline">LinkedIn</a>
-                  <a href="#" className="block text-blue-600 hover:underline">Instagram</a>
-                </div>
-              </div>
+            <h2 className="text-3xl font-bold text-center mb-12">Contactos</h2>
+            <div className="flex flex-wrap justify-center gap-8">
+              {/* GitHub */}
+              <a
+                href="https://github.com/evelinpulsara"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                  alt="GitHub"
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
+
+              {/* Email */}
+              <a
+                href="https://outlook.office.com/mail/?deeplink=mail%2F0%2F%3Fnlp%3D0"
+                className="block p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              >
+                <img
+                  src="https://toppng.com/uploads/preview/outlook-logo-png-1764x1490-117357613016jetuonqfr.webp"
+                  alt="Email"
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/justevie_93/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+                  alt="Instagram"
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/profile.php?id=61557542469129https://www.facebook.com/profile.php?id=61557542469129"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              >
+                <img
+                  src="https://images.vexels.com/media/users/3/223136/isolated/preview/984f500cf9de4519b02b354346eb72e0-icono-de-facebook-redes-sociales.png"
+                  alt="Facebook"
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
+
+              {/* X (Twitter) */}
+              <a
+                href="https://x.com/JustEvie_93"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              >
+                <img
+                  src="https://img.freepik.com/vector-gratis/nuevo-diseno-icono-x-logotipo-twitter-2023_1017-45418.jpg?semt=ais_hybrid&w=740&q=80"
+                  alt="X"
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/evelin-pulsara-6790a3359/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+                  alt="LinkedIn"
+                  className="w-12 h-12 object-contain"
+                />
+              </a>
             </div>
           </div>
         </div>
