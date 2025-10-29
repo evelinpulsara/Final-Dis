@@ -444,7 +444,7 @@ export default function PortfolioLanding() {
               {/* Cuadro 1 */}
               <div className="bg-[#D6C8F0] p-6 rounded-xl shadow-md border border-gray-300">
                 <p className="text-gray-800 italic mb-4">
-                  “Demuestra gran dedicación en cada proyecto, siempre busca soluciones creativas y bien estructuradas.”
+                  Demuestra gran dedicación en cada proyecto, siempre busca soluciones creativas y bien estructuradas.
                 </p>
                 <div className="flex items-center gap-3">
                   <img
@@ -462,7 +462,7 @@ export default function PortfolioLanding() {
               {/* Cuadro 2 */}
               <div className="bg-[#C7D9F7] p-6 rounded-xl shadow-md border border-gray-300">
                 <p className="text-gray-800 italic mb-4">
-                  “Trabajar con ella en equipo es inspirador; aporta ideas claras y mantiene una actitud positiva y profesional.”
+                  Trabajar con ella en equipo es inspirador; aporta ideas claras y mantiene una actitud positiva y profesional.
                 </p>
                 <div className="flex items-center gap-3">
                   <img
@@ -480,7 +480,7 @@ export default function PortfolioLanding() {
               {/* Cuadro 3 */}
               <div className="bg-[#E9E2F7] p-6 rounded-xl shadow-md border border-gray-300">
                 <p className="text-gray-800 italic mb-4">
-                  “Tiene la habilidad de unir lo técnico con lo humano, logrando resultados sólidos y con valor práctico.”
+                  Tiene la habilidad de unir lo técnico con lo humano, logrando resultados sólidos y con valor práctico.
                 </p>
                 <div className="flex items-center gap-3">
                   <img
@@ -498,7 +498,7 @@ export default function PortfolioLanding() {
               {/* Cuadro 4 */}
               <div className="bg-[#F0EEF9] p-6 rounded-xl shadow-md border border-gray-300">
                 <p className="text-gray-800 italic mb-4">
-                  “Quote”
+                  Quote
                 </p>
                 <div className="flex items-center gap-3">
                   <img
@@ -516,7 +516,7 @@ export default function PortfolioLanding() {
               {/* Cuadro 5 */}
               <div className="bg-[#F0EEF9] p-6 rounded-xl shadow-md border border-gray-300">
                 <p className="text-gray-800 italic mb-4">
-                  “Quote”
+                  Quote
                 </p>
                 <div className="flex items-center gap-3">
                   <img
@@ -534,7 +534,7 @@ export default function PortfolioLanding() {
               {/* Cuadro 6 */}
               <div className="bg-[#F0EEF9] p-6 rounded-xl shadow-md border border-gray-300">
                 <p className="text-gray-800 italic mb-4">
-                  “Quote”
+                  Quote
                 </p>
                 <div className="flex items-center gap-3">
                   <img
