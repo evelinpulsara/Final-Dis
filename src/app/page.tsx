@@ -217,8 +217,8 @@ export default function PortfolioLanding() {
             <div className="lg:w-1/2 relative flex items-center justify-center">
               <div className="absolute inset-0 bg-[#DFC3EF] rounded-full blur-3xl opacity-30 transform scale-110" />
               <div className="relative w-full max-w-xs mx-auto">
-                {/* Carrusel responsivo */}
-                <div className="aspect-square w-full max-w-[320px] h-auto relative">
+                {/* Carrusel totalmente responsivo */}
+                <div className="w-full aspect-square sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] relative">
                   {images.map((img, index) => {
                     const offset = (index - currentImageIndex + images.length) % images.length;
                     let transform = '';
