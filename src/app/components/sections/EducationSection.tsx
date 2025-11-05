@@ -12,17 +12,53 @@ export default function EducationSection({ isDark, language, activeMenu }: Educa
     es: {
       title: 'Educación',
       items: [
-        { title: 'Técnico en sistemas', status: 'Terminado', org: 'SistemPlus', date: 'Date' },
-        { title: 'Técnico en electrónica', status: 'Terminado', org: 'Cinar Sistemas', date: 'Date' },
-        { title: 'Ingeniería de software', status: 'Activo', org: 'Universidad Cooperativa', date: '----' },
+        { 
+          title: 'Técnico en sistemas', 
+          status: 'Terminado', 
+          org: 'SistemPlus', 
+          date: 'Date',
+          link: 'https://systemplus.tech' // 👈 Cambia esta URL por la real
+        },
+        { 
+          title: 'Técnico en electrónica', 
+          status: 'Terminado', 
+          org: 'Cinar Sistemas', 
+          date: 'Date',
+          link: 'https://cinarsistemas.edu.co' // 👈 Cambia esta URL por la real
+        },
+        { 
+          title: 'Ingeniería de software', 
+          status: 'Activo', 
+          org: 'Universidad Cooperativa', 
+          date: '----',
+          link: 'https://ucc.edu.co ' // 👈 Cambia esta URL por la real
+        },
       ]
     },
     en: {
       title: 'Education',
       items: [
-        { title: 'Systems Technician', status: 'Completed', org: 'SistemPlus', date: 'Date' },
-        { title: 'Electronics Technician', status: 'Completed', org: 'Cinar Sistemas', date: 'Date' },
-        { title: 'Software Engineering', status: 'Active', org: 'Universidad Cooperativa', date: '----' },
+        { 
+          title: 'Systems Technician', 
+          status: 'Completed', 
+          org: 'SistemPlus', 
+          date: 'Date',
+          link: 'https://systemplus.tech'
+        },
+        { 
+          title: 'Electronics Technician', 
+          status: 'Completed', 
+          org: 'Cinar Sistemas', 
+          date: 'Date',
+          link: 'https://cinarsistemas.edu.co'
+        },
+        { 
+          title: 'Software Engineering', 
+          status: 'Active', 
+          org: 'Universidad Cooperativa', 
+          date: '----',
+          link: 'https://ucc.edu.co'
+        },
       ]
     }
   }[language];
@@ -45,34 +81,55 @@ export default function EducationSection({ isDark, language, activeMenu }: Educa
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {t.items.map((item, idx) => (
-              <div
-                key={idx}
-                className={`${isDark ? 'bg-[#1C1B2E] text-white' : 'bg-white text-gray-800'} p-6 rounded-xl shadow-inner hover:shadow-lg transition-shadow`}
-              >
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className={`${isDark ? 'text-[#FF8989]' : 'text-gray-600'} mb-4`}>{item.status}</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white p-1">
-                    <img
-                      src={
-                        idx === 0
-                          ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnKbc9YpxUwySM6rEAv_K3jfJgW6lZDtglGw&s"
-                          : idx === 1
-                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVTULg_1QeoH6jdICwT-C1bj7VMJU9sXCg8g&s"
-                            : "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/U._Cooperativa_de_Colombia_logo.svg/2276px-U._Cooperativa_de_Colombia_logo.svg.png"
-                      }
-                      alt={`Logo ${item.org}`}
-                      className="w-full h-full object-contain"
-                    />
+            {t.items.map((item, idx) => {
+              // Colores para modo oscuro
+              const darkColors = ['#1C1B2E', '#322F56', '#2D255A'];
+              // Color de fondo según modo
+              const bgColor = isDark ? darkColors[idx] : 'bg-[#E9E2F7]';
+              // Color del texto del estado
+              const statusColor = item.status === 'Terminado' || item.status === 'Completed' 
+                ? 'text-red-500' 
+                : 'text-green-500';
+              // Clase para el punto titilante
+              const pulseClass = item.status === 'Activo' || item.status === 'Active' 
+                ? 'animate-pulse' 
+                : '';
+
+              return (
+                <a
+                  key={idx}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`block p-6 rounded-xl shadow-inner hover:shadow-lg transition-shadow ${bgColor} ${isDark ? 'text-white' : 'text-gray-800'}`}
+                >
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className={`w-2 h-2 rounded-full ${statusColor} ${pulseClass}`}></span>
+                    <p className={statusColor}>{item.status}</p>
                   </div>
-                  <div>
-                    <p className="font-medium">{item.org}</p>
-                    <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{item.date}</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-white p-1">
+                      <img
+                        src={
+                          idx === 0
+                            ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnKbc9YpxUwySM6rEAv_K3jfJgW6lZDtglGw&s"
+                            : idx === 1
+                              ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVTULg_1QeoH6jdICwT-C1bj7VMJU9sXCg8g&s"
+                              : "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/U._Cooperativa_de_Colombia_logo.svg/2276px-U._Cooperativa_de_Colombia_logo.svg.png"
+                        }
+                        alt={`Logo ${item.org}`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div>
+                      <p className="font-medium">{item.org}</p>
+                      <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{item.date}</p>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
