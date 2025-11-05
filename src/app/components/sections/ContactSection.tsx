@@ -1,4 +1,4 @@
-// app/contact/page.tsx
+// app/components/sections/ContactSection.tsx
 import React from 'react';
 
 interface ContactProps {

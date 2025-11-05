@@ -1,4 +1,4 @@
-// app/about/page.tsx
+// app/components/sections/AboutSection.tsx
 'use client';
 
 import React, { useEffect } from 'react';
@@ -29,14 +29,12 @@ export default function AboutSection({
     }
   }[language];
 
-  // Array de imágenes
   const images = [
     '/imagenes/Foto4.jpeg',
     '/imagenes/Foto5.jpeg',
     '/imagenes/Foto6.jpeg'
   ];
 
-  // ✅ Corregido: se calcula el siguiente índice sin usar la forma callback
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((currentImageIndex + 1) % images.length);
@@ -51,7 +49,6 @@ export default function AboutSection({
           <div className="lg:w-1/2 relative flex items-center justify-center">
             <div className="absolute inset-0 bg-[#DFC3EF] rounded-full blur-3xl opacity-30 transform scale-110" />
             <div className="relative w-full max-w-xs mx-auto">
-              {/* Carrusel totalmente responsivo */}
               <div className="w-full aspect-square sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] relative">
                 {images.map((img, index) => {
                   const offset = (index - currentImageIndex + images.length) % images.length;

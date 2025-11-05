@@ -1,4 +1,4 @@
-// app/projects/page.tsx
+// app/components/sections/ProjectsSection.tsx
 import React from 'react';
 
 interface ProjectsProps {

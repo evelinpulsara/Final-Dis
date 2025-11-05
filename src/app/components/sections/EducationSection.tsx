@@ -1,4 +1,4 @@
-// app/education/page.tsx
+// app/components/sections/EducationSection.tsx
 import React from 'react';
 
 interface EducationProps {

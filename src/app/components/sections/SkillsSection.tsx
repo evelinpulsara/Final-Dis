@@ -1,4 +1,4 @@
-// app/skills/page.tsx
+// app/components/sections/SkillsSection.tsx
 import React from 'react';
 
 interface SkillsProps {

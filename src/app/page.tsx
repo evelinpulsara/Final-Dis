@@ -1,22 +1,22 @@
+// app/page.tsx
 'use client';
 import React, { useState, useEffect } from 'react';
 
 import Header from './components/Header';
-import AboutSection from './about/page';
-import EducationSection from './education/page';
-import SkillsSection from './skills/page';
-import ProjectsSection from './projects/page';
-import TestimonialsSection from './testimonials/page';
-import ContactSection from './contact/page';
+import AboutSection from './components/sections/AboutSection';
+import EducationSection from './components/sections/EducationSection';
+import SkillsSection from './components/sections/SkillsSection';
+import ProjectsSection from './components/sections/ProjectsSection';
+import TestimonialsSection from './components/sections/TestimonialsSection';
+import ContactSection from './components/sections/ContactSection';
 
 export default function PortfolioLanding() {
   const [activeMenu, setActiveMenu] = useState('Sobre mi');
   const [isDark, setIsDark] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, width: 0 });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [language, setLanguage] = useState<'es' | 'en'>('es'); // Estado para el idioma
+  const [language, setLanguage] = useState<'es' | 'en'>('es');
 
-  // Función para cambiar el idioma
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'es' ? 'en' : 'es');
   };
@@ -74,7 +74,6 @@ export default function PortfolioLanding() {
         </div>
       </section>
 
-      {/* Renderizar las secciones */}
       <AboutSection
         isDark={isDark}
         language={language}

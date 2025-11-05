@@ -1,4 +1,4 @@
-// app/testimonials/page.tsx
+// app/components/sections/TestimonialsSection.tsx
 import React from 'react';
 
 interface TestimonialsProps {
