@@ -236,7 +236,7 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
 
                 {/* Comentario */}
                 <p className={`italic mb-6 text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                  "{testimonial.text}"
+                  &quot;{testimonial.text}&quot;
                 </p>
 
                 {/* Autor */}
