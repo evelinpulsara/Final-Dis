@@ -8,13 +8,15 @@ interface AboutProps {
   language: 'es' | 'en';
   currentImageIndex: number;
   setCurrentImageIndex: (index: number) => void;
+  activeMenu: string;
 }
 
 export default function AboutSection({
   isDark,
   language,
   currentImageIndex,
-  setCurrentImageIndex
+  setCurrentImageIndex,
+  activeMenu
 }: AboutProps) {
   const t = {
     es: {
@@ -43,7 +45,7 @@ export default function AboutSection({
   }, [currentImageIndex, images.length, setCurrentImageIndex]);
 
   return (
-    <section id="sobremi" className="py-20 relative">
+    <section id="sobremi" className="py-20 relative scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
           <div className="lg:w-1/2 relative flex items-center justify-center">
@@ -102,15 +104,22 @@ export default function AboutSection({
           <div className="lg:w-1/2 relative">
             <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#DFC3EF] rounded-full opacity-20 blur-2xl" />
             <div className="relative">
-              <div className="inline-block mb-6 px-6 py-3 bg-[#DFC3EF] rounded-full">
-                <h2 className="text-2xl font-semibold text-gray-800">{t.title}</h2>
+              {/* Título con burbuja SOLO si está activo */}
+              {activeMenu === 'Sobre mi' ? (
+                <div className="inline-block mb-6 px-6 py-3 rounded-full font-semibold text-lg bg-[#DFC3EF]/80 text-gray-800 shadow-inner">
+                  {t.title}
+                </div>
+              ) : (
+                <h2 className="text-2xl font-semibold text-gray-800 mb-6">{t.title}</h2>
+              )}
+
+              {/* Contenedor de texto con sombra interna y fondo correcto */}
+              <div className={`p-6 rounded-xl shadow-inner ${
+                isDark ? 'bg-[#1C1B2E] text-white' : 'bg-white text-gray-700'
+              }`}>
+                <p className="mb-6 leading-relaxed">{t.p1}</p>
+                <p className="leading-relaxed">{t.p2}</p>
               </div>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                {t.p1}
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                {t.p2}
-              </p>
             </div>
           </div>
         </div>

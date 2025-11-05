@@ -4,9 +4,10 @@ import React from 'react';
 interface TestimonialsProps {
   isDark: boolean;
   language: 'es' | 'en';
+  activeMenu: string;
 }
 
-export default function TestimonialsSection({ isDark, language }: TestimonialsProps) {
+export default function TestimonialsSection({ isDark, language, activeMenu }: TestimonialsProps) {
   const t = {
     es: {
       title: 'Testimonios',
@@ -33,19 +34,33 @@ export default function TestimonialsSection({ isDark, language }: TestimonialsPr
   }[language];
 
   return (
-    <section id="testimonios" className={`py-20 ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'}`}>
+    <section id="testimonios" className={`py-20 ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'} scroll-mt-24`}>
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : ''}`}>{t.title}</h2>
+          {/* Título con burbuja solo si está activo */}
+          {activeMenu === 'Testimonios' ? (
+            <div className="text-center mb-12">
+              <div className="inline-block px-6 py-3 rounded-full font-semibold text-lg bg-[#DFC3EF]/80 text-gray-800 shadow-inner">
+                {t.title}
+              </div>
+            </div>
+          ) : (
+            <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : ''}`}>
+              {t.title}
+            </h2>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {t.items.map((testimonial, idx) => (
               <div
                 key={idx}
-                className={`${isDark ? 'bg-[#1C1B2E] border-[#333]' : 'bg-[#D6C8F0] border-gray-300'} p-6 rounded-xl shadow-md border hover:shadow-lg transition-shadow`}
+                className={`p-6 rounded-xl shadow-inner border hover:shadow-lg transition-shadow ${
+                  isDark 
+                    ? 'bg-[#1C1B2E] border-[#333] text-white' 
+                    : 'bg-white border-gray-300 text-gray-800'
+                }`}
               >
-                <p className={`${isDark ? 'text-white' : 'text-gray-800'} italic mb-4`}>
-                  {testimonial.text}
-                </p>
+                <p className="italic mb-4">{testimonial.text}</p>
                 <div className="flex items-center gap-3">
                   <img
                     src={`https://randomuser.me/api/portraits/${idx % 2 === 0 ? 'women' : 'men'}/${30 + idx}.jpg`}

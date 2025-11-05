@@ -4,9 +4,10 @@ import React from 'react';
 interface ContactProps {
   isDark: boolean;
   language: 'es' | 'en';
+  activeMenu: string;
 }
 
-export default function ContactSection({ isDark, language }: ContactProps) {
+export default function ContactSection({ isDark, language, activeMenu }: ContactProps) {
   const t = {
     es: {
       title: 'Contactos',
@@ -17,10 +18,22 @@ export default function ContactSection({ isDark, language }: ContactProps) {
   }[language];
 
   return (
-    <section id="contacto" className={`py-20 ${isDark ? 'bg-[#1C1B2E]' : 'bg-[#E9E2F7]'}`}>
+    <section id="contacto" className={`py-20 ${isDark ? 'bg-[#1C1B2E]' : 'bg-[#E9E2F7]'} scroll-mt-24`}>
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : ''}`}>{t.title}</h2>
+          {/* Título con burbuja solo si está activo */}
+          {activeMenu === 'Contacto' ? (
+            <div className="text-center mb-12">
+              <div className="inline-block px-6 py-3 rounded-full font-semibold text-lg bg-[#DFC3EF]/80 text-gray-800 shadow-inner">
+                {t.title}
+              </div>
+            </div>
+          ) : (
+            <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : ''}`}>
+              {t.title}
+            </h2>
+          )}
+
           <div className="flex flex-wrap justify-center gap-8">
             {[
               { name: 'GitHub', url: 'https://github.com/evelinpulsara', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png' },
@@ -35,7 +48,9 @@ export default function ContactSection({ isDark, language }: ContactProps) {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`block p-4 ${isDark ? 'bg-[#2D255A]' : 'bg-white'} rounded-xl shadow-md hover:shadow-lg transition-shadow`}
+                className={`block p-4 rounded-xl shadow-inner hover:shadow-lg transition-shadow ${
+                  isDark ? 'bg-[#2D255A] text-white' : 'bg-white text-gray-800'
+                }`}
               >
                 <img src={social.img} alt={social.name} className="w-12 h-12 object-contain" />
               </a>

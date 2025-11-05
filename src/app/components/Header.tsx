@@ -37,7 +37,7 @@ export default function Header({
     <header className={`fixed top-0 left-0 right-0 z-50 ${isDark ? 'bg-[#0F1029]/85' : 'bg-[#F5F3FA]/85'} backdrop-blur-sm shadow-sm`}>
       <nav className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-8 relative">
+          <div className="flex items-center gap-3 relative"> {/* 👈 Cambiado a gap-3 */}
             <div
               className="absolute h-10 bg-[#DFC3EF] rounded-full transition-all duration-300 ease-out shadow-inner"
               style={{

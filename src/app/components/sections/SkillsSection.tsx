@@ -4,9 +4,10 @@ import React from 'react';
 interface SkillsProps {
   isDark: boolean;
   language: 'es' | 'en';
+  activeMenu: string;
 }
 
-export default function SkillsSection({ isDark, language }: SkillsProps) {
+export default function SkillsSection({ isDark, language, activeMenu }: SkillsProps) {
   const t = {
     es: {
       title: 'Conocimientos',
@@ -45,15 +46,29 @@ export default function SkillsSection({ isDark, language }: SkillsProps) {
   }[language];
 
   return (
-    <section id="conocimientos" className={`py-20 ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'}`}>
+    <section id="conocimientos" className={`py-20 ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'} scroll-mt-24`}>
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : ''}`}>{t.title}</h2>
+          {/* Título con burbuja solo si está activo */}
+          {activeMenu === 'Conocimientos' ? (
+            <div className="text-center mb-12">
+              <div className="inline-block px-6 py-3 rounded-full font-semibold text-lg bg-[#DFC3EF]/80 text-gray-800 shadow-inner">
+                {t.title}
+              </div>
+            </div>
+          ) : (
+            <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : ''}`}>
+              {t.title}
+            </h2>
+          )}
+
           <div className="space-y-8">
             {t.items.map((item, idx) => (
               <div
                 key={idx}
-                className={`${isDark ? 'bg-[#2D255A]' : idx === 0 ? 'bg-[#D6C8F0]' : idx === 1 ? 'bg-[#C7D9F7]' : 'bg-[#A9B7F2]'} p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6`}
+                className={`p-6 rounded-xl shadow-inner flex flex-col md:flex-row items-start gap-6 ${
+                  isDark ? 'bg-[#1C1B2E] text-white' : 'bg-white text-gray-800'
+                }`}
               >
                 <div className="w-20 h-20 rounded-lg bg-white p-2">
                   <img
@@ -69,7 +84,7 @@ export default function SkillsSection({ isDark, language }: SkillsProps) {
                   />
                 </div>
                 <div>
-                  <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : ''}`}>{item.title}</h3>
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                   <p className={isDark ? 'text-[#C7C7DB]' : 'text-gray-700'}>
                     {item.desc}
                   </p>
