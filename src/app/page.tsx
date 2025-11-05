@@ -33,12 +33,12 @@ export default function PortfolioLanding() {
       ],
       projects: 'Proyectos',
       projectsItems: [
-        { title: 'Boleto de avión', github: 'https://github.com/evelinpulsara/Boleto.git', vercel: 'https://boleto-tawny.vercel.app', img: '/imagenes/boleto.png' },
-        { title: 'Invitación XV', github: 'https://github.com/evelinpulsara/invitacion-Angely.git', vercel: 'https://invitacion-angely.vercel.app', img: '/imagenes/xv.png' },
-        { title: 'Formulario', github: 'https://github.com/evelinpulsara/Cuarto-Taller.git', vercel: 'https://taller-interfaz.vercel.app', img: '/imagenes/interfaz.png' },
-        { title: 'Interfaz', github: 'https://github.com/evelinpulsara/responsive-design.git', vercel: 'https://responsive-design-indol.vercel.app', img: '/imagenes/netflix.png' },
-        { title: 'Title', github: '-', vercel: '#', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png' },
-        { title: 'Title', github: '-', vercel: '#', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png' },
+        { title: 'Boleto de avión', github: 'https://github.com/evelinpulsara/Boleto.git  ', vercel: 'https://boleto-tawny.vercel.app  ', img: '/imagenes/boleto.png' },
+        { title: 'Invitación XV', github: 'https://github.com/evelinpulsara/invitacion-Angely.git  ', vercel: 'https://invitacion-angely.vercel.app  ', img: '/imagenes/xv.png' },
+        { title: 'Formulario', github: 'https://github.com/evelinpulsara/Cuarto-Taller.git  ', vercel: 'https://taller-interfaz.vercel.app  ', img: '/imagenes/interfaz.png' },
+        { title: 'Interfaz', github: 'https://github.com/evelinpulsara/responsive-design.git  ', vercel: 'https://responsive-design-indol.vercel.app  ', img: '/imagenes/netflix.png' },
+        { title: 'Title', github: '-', vercel: '#', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png  ' },
+        { title: 'Title', github: '-', vercel: '#', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png  ' },
       ],
       testimonials: 'Testimonios',
       testimonialsItems: [
@@ -69,12 +69,12 @@ export default function PortfolioLanding() {
       ],
       projects: 'Projects',
       projectsItems: [
-        { title: 'Flight Ticket', github: 'https://github.com/evelinpulsara/Boleto.git', vercel: 'https://boleto-tawny.vercel.app', img: '/imagenes/boleto.png' },
-        { title: 'XV Invitation', github: 'https://github.com/evelinpulsara/invitacion-Angely.git', vercel: 'https://invitacion-angely.vercel.app', img: '/imagenes/xv.png' },
-        { title: 'Form', github: 'https://github.com/evelinpulsara/Cuarto-Taller.git', vercel: 'https://taller-interfaz.vercel.app', img: '/imagenes/interfaz.png' },
-        { title: 'Interface', github: 'https://github.com/evelinpulsara/responsive-design.git', vercel: 'https://responsive-design-indol.vercel.app', img: '/imagenes/netflix.png' },
-        { title: 'Title', github: '-', vercel: '#', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png' },
-        { title: 'Title', github: '-', vercel: '#', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png' },
+        { title: 'Flight Ticket', github: 'https://github.com/evelinpulsara/Boleto.git  ', vercel: 'https://boleto-tawny.vercel.app  ', img: '/imagenes/boleto.png' },
+        { title: 'XV Invitation', github: 'https://github.com/evelinpulsara/invitacion-Angely.git  ', vercel: 'https://invitacion-angely.vercel.app  ', img: '/imagenes/xv.png' },
+        { title: 'Form', github: 'https://github.com/evelinpulsara/Cuarto-Taller.git  ', vercel: 'https://taller-interfaz.vercel.app  ', img: '/imagenes/interfaz.png' },
+        { title: 'Interface', github: 'https://github.com/evelinpulsara/responsive-design.git  ', vercel: 'https://responsive-design-indol.vercel.app  ', img: '/imagenes/netflix.png' },
+        { title: 'Title', github: '-', vercel: '#', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png  ' },
+        { title: 'Title', github: '-', vercel: '#', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png  ' },
       ],
       testimonials: 'Testimonials',
       testimonialsItems: [
@@ -216,52 +216,55 @@ export default function PortfolioLanding() {
           <div className="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
             <div className="lg:w-1/2 relative flex items-center justify-center">
               <div className="absolute inset-0 bg-[#DFC3EF] rounded-full blur-3xl opacity-30 transform scale-110" />
-              <div className="relative w-full max-w-xs mx-auto h-[320px]">
-                {images.map((img, index) => {
-                  const offset = (index - currentImageIndex + images.length) % images.length;
-                  let transform = '';
-                  let zIndex = 0;
-                  let opacity = 0;
-                  if (offset === 0) {
-                    transform = 'translateX(0) translateY(0) scale(1)';
-                    zIndex = 30;
-                    opacity = 1;
-                  } else if (offset === 1) {
-                    transform = 'translateX(50%) translateY(-8%) scale(0.88)';
-                    zIndex = 20;
-                    opacity = 0.6;
-                  } else if (offset === images.length - 1) {
-                    transform = 'translateX(-50%) translateY(-8%) scale(0.88)';
-                    zIndex = 10;
-                    opacity = 0.6;
-                  } else {
-                    transform = 'translateX(0) translateY(0) scale(0.5)';
-                    zIndex = 0;
-                    opacity = 0;
-                  }
-                  return (
-                    <div
-                      key={index}
-                      className="absolute inset-0 transition-all duration-700 ease-in-out"
-                      style={{ transform, zIndex, opacity }}
-                    >
-                      <div className="w-full h-full rounded-[20px] overflow-hidden shadow-2xl bg-gradient-to-br from-purple-200 to-blue-200">
-                        <img src={img} alt={`Foto ${index + 1}`} className="w-full h-full object-cover" />
+              <div className="relative w-full max-w-xs mx-auto">
+                {/* Carrusel responsivo */}
+                <div className="aspect-square w-full max-w-[320px] h-auto relative">
+                  {images.map((img, index) => {
+                    const offset = (index - currentImageIndex + images.length) % images.length;
+                    let transform = '';
+                    let zIndex = 0;
+                    let opacity = 0;
+                    if (offset === 0) {
+                      transform = 'translateX(0) translateY(0) scale(1)';
+                      zIndex = 30;
+                      opacity = 1;
+                    } else if (offset === 1) {
+                      transform = 'translateX(50%) translateY(-8%) scale(0.88)';
+                      zIndex = 20;
+                      opacity = 0.6;
+                    } else if (offset === images.length - 1) {
+                      transform = 'translateX(-50%) translateY(-8%) scale(0.88)';
+                      zIndex = 10;
+                      opacity = 0.6;
+                    } else {
+                      transform = 'translateX(0) translateY(0) scale(0.5)';
+                      zIndex = 0;
+                      opacity = 0;
+                    }
+                    return (
+                      <div
+                        key={index}
+                        className="absolute inset-0 transition-all duration-700 ease-in-out"
+                        style={{ transform, zIndex, opacity }}
+                      >
+                        <div className="w-full h-full rounded-[20px] overflow-hidden shadow-2xl bg-gradient-to-br from-purple-200 to-blue-200">
+                          <img src={img} alt={`Foto ${index + 1}`} className="w-full h-full object-cover" />
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-40 flex gap-2">
-                  {images.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentImageIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        index === currentImageIndex ? 'bg-purple-400 w-6' : 'bg-gray-300 hover:bg-purple-300'
-                      }`}
-                      aria-label={`Ir a imagen ${index + 1}`}
-                    />
-                  ))}
+                    );
+                  })}
+                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-40 flex gap-2">
+                    {images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          index === currentImageIndex ? 'bg-purple-400 w-6' : 'bg-gray-300 hover:bg-purple-300'
+                        }`}
+                        aria-label={`Ir a imagen ${index + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -307,7 +310,7 @@ export default function PortfolioLanding() {
                 <p className={`${isDark ? 'text-[#FF8989]' : 'text-gray-600'} mb-4`}>{t.educationItems[1].status}</p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white p-1">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVTULg_1QeoH6jdICwT-C1bj7VMJU9sXCg8g&s" alt="Logo Cinar Sistemas" className="w-full h-full object-contain" />
+                    <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVTULg_1QeoH6jdICwT-C1bj7VMJU9sXCg8g&s" alt="Logo Cinar Sistemas" className="w-full h-full object-contain" />
                   </div>
                   <div>
                     <p className={`font-medium ${isDark ? 'text-white' : ''}`}>{t.educationItems[1].org}</p>
@@ -320,7 +323,7 @@ export default function PortfolioLanding() {
                 <p className={`${isDark ? 'text-[#4CAF50]' : 'text-gray-600'} mb-4`}>{t.educationItems[2].status}</p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-white p-1">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/U._Cooperativa_de_Colombia_logo.svg/2276px-U._Cooperativa_de_Colombia_logo.svg.png" alt="Logo Universidad Cooperativa" className="w-full h-full object-contain" />
+                    <img src="  https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/U._Cooperativa_de_Colombia_logo.svg/2276px-U._Cooperativa_de_Colombia_logo.svg.png  " alt="Logo Universidad Cooperativa" className="w-full h-full object-contain" />
                   </div>
                   <div>
                     <p className={`font-medium ${isDark ? 'text-white' : ''}`}>{t.educationItems[2].org}</p>
@@ -341,7 +344,7 @@ export default function PortfolioLanding() {
             <div className="space-y-8">
               <div className={`${isDark ? 'bg-[#2D255A]' : 'bg-[#D6C8F0]'} p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6`}>
                 <div className="w-20 h-20 rounded-lg bg-white p-2">
-                  <img src="https://images.icon-icons.com/2108/PNG/512/java_icon_130901.png" alt="Java Logo" className="w-full h-full object-contain" />
+                  <img src="https://images.icon-icons.com/2108/PNG/512/java_icon_130901.png  " alt="Java Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : ''}`}>{t.skillsItems[0].title}</h3>
@@ -352,7 +355,7 @@ export default function PortfolioLanding() {
               </div>
               <div className={`${isDark ? 'bg-[#1C1B2E]' : 'bg-[#C7D9F7]'} p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6`}>
                 <div className="w-20 h-20 rounded-lg bg-white p-2">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png" alt="Python Logo" className="w-full h-full object-contain" />
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1200px-Python-logo-notext.svg.png  " alt="Python Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : ''}`}>{t.skillsItems[1].title}</h3>
@@ -363,7 +366,7 @@ export default function PortfolioLanding() {
               </div>
               <div className={`${isDark ? 'bg-[#322F56]' : 'bg-[#A9B7F2]'} p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col md:flex-row items-start gap-6`}>
                 <div className="w-20 h-20 rounded-lg bg-white p-2">
-                  <img src="https://cdn.worldvectorlogo.com/logos/unity-69.svg" alt="Unity Logo" className="w-full h-full object-contain" />
+                  <img src="https://cdn.worldvectorlogo.com/logos/unity-69.svg  " alt="Unity Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : ''}`}>{t.skillsItems[2].title}</h3>
@@ -434,7 +437,7 @@ export default function PortfolioLanding() {
                   </p>
                   <div className="flex items-center gap-3">
                     <img
-                      src={`https://randomuser.me/api/portraits/${idx % 2 === 0 ? 'women' : 'men'}/${30 + idx}.jpg`}
+                      src={`https://randomuser.me/api/portraits/  ${idx % 2 === 0 ? 'women' : 'men'}/${30 + idx}.jpg`}
                       alt={testimonial.name}
                       className="w-10 h-10 rounded-full object-cover"
                     />
@@ -457,12 +460,12 @@ export default function PortfolioLanding() {
             <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : ''}`}>{t.contact}</h2>
             <div className="flex flex-wrap justify-center gap-8">
               {[
-                { name: 'GitHub', url: 'https://github.com/evelinpulsara', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png' },
-                { name: 'Email', url: 'mailto:evelinpulsara@example.com', img: 'https://toppng.com/uploads/preview/outlook-logo-png-1764x1490-117357613016jetuonqfr.webp' },
-                { name: 'Instagram', url: 'https://www.instagram.com/justevie_93/', img: 'https://cdn-icons-png.flaticon.com/512/2111/2111463.png' },
-                { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61557542469129', img: 'https://images.vexels.com/media/users/3/223136/isolated/preview/984f500cf9de4519b02b354346eb72e0-icono-de-facebook-redes-sociales.png' },
-                { name: 'X', url: 'https://x.com/JustEvie_93', img: 'https://img.freepik.com/vector-gratis/nuevo-diseno-icono-x-logotipo-twitter-2023_1017-45418.jpg?semt=ais_hybrid&w=740&q=80' },
-                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/evelin-pulsara-6790a3359/', img: 'https://cdn-icons-png.flaticon.com/512/174/174857.png' },
+                { name: 'GitHub', url: 'https://github.com/evelinpulsara  ', img: 'https://cdn-icons-png.flaticon.com/512/25/25231.png  ' },
+                { name: 'Email', url: 'mailto:evelinpulsara@example.com', img: 'https://toppng.com/uploads/preview/outlook-logo-png-1764x1490-117357613016jetuonqfr.webp  ' },
+                { name: 'Instagram', url: 'https://www.instagram.com/justevie_93/  ', img: 'https://cdn-icons-png.flaticon.com/512/2111/2111463.png  ' },
+                { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=61557542469129', img: '  https://images.vexels.com/media/users/3/223136/isolated/preview/984f500cf9de4519b02b354346eb72e0-icono-de-facebook-redes-sociales.png  ' },
+                { name: 'X', url: 'https://x.com/JustEvie_93  ', img: 'https://img.freepik.com/vector-gratis/nuevo-diseno-icono-x-logotipo-twitter-2023_1017-45418.jpg?semt=ais_hybrid&w=740&q=80' },
+                { name: 'LinkedIn', url: '  https://www.linkedin.com/in/evelin-pulsara-6790a3359/  ', img: 'https://cdn-icons-png.flaticon.com/512/174/174857.png  ' },
               ].map((social, idx) => (
                 <a
                   key={idx}
