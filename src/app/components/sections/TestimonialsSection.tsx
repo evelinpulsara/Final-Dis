@@ -1,3 +1,6 @@
+// app/components/sections/TestimonialsSection.tsx
+'use client';
+
 import React, { useState } from 'react';
 
 interface TestimonialsProps {
@@ -12,7 +15,7 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
     name: '',
     role: '',
     comment: '',
-    photo: ''
+    photo: '' // seguirá siendo una string (URL de datos)
   });
   const [testimonials, setTestimonials] = useState([
     { 
@@ -45,7 +48,7 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
       yourName: 'Tu nombre',
       yourRole: 'Tu rol/cargo',
       yourComment: 'Tu comentario',
-      photoUrl: 'URL de tu foto (opcional)',
+      photoUpload: 'Sube tu foto (opcional)',
       submit: 'Enviar testimonio',
       cancel: 'Cancelar'
     },
@@ -55,11 +58,27 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
       yourName: 'Your name',
       yourRole: 'Your role/position',
       yourComment: 'Your comment',
-      photoUrl: 'Your photo URL (optional)',
+      photoUpload: 'Upload your photo (optional)',
       submit: 'Submit testimonial',
       cancel: 'Cancel'
     }
   }[language];
+
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        if (event.target?.result) {
+          setFormData({ ...formData, photo: event.target.result as string });
+        }
+      };
+      reader.readAsDataURL(file);
+    } else {
+      // Si no hay archivo, limpiamos el campo
+      setFormData({ ...formData, photo: '' });
+    }
+  };
 
   const handleSubmit = () => {
     if (formData.name && formData.comment) {
@@ -177,20 +196,20 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
                   />
                 </div>
 
+                {/* ✅ Cambiado: ahora es un input de tipo file */}
                 <div>
                   <label className={`block text-sm font-semibold mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                    {t.photoUrl}
+                    {t.photoUpload}
                   </label>
                   <input
-                    type="url"
-                    value={formData.photo}
-                    onChange={(e) => setFormData({...formData, photo: e.target.value})}
+                    type="file"
+                    accept="image/*"
+                    onChange={handlePhotoChange}
                     className={`w-full px-4 py-3 rounded-lg transition-all duration-200 ${
                       isDark
-                        ? 'bg-white/5 border border-purple-500/30 text-white focus:border-purple-500 focus:bg-white/10'
-                        : 'bg-purple-50 border border-purple-200 text-gray-900 focus:border-purple-500 focus:bg-white'
+                        ? 'bg-white/5 border border-purple-500/30 text-white focus:border-purple-500 focus:bg-white/10 file:bg-transparent file:text-white file:border-0'
+                        : 'bg-purple-50 border border-purple-200 text-gray-900 focus:border-purple-500 focus:bg-white file:bg-transparent file:text-gray-900 file:border-0'
                     } outline-none`}
-                    placeholder="https://ejemplo.com/tu-foto.jpg"
                   />
                 </div>
 
@@ -227,19 +246,16 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
                     : 'bg-white hover:bg-gradient-to-br hover:from-white hover:to-purple-50 shadow-lg hover:shadow-xl'
                 } border ${isDark ? 'border-purple-500/20 hover:border-purple-500/40' : 'border-purple-100 hover:border-purple-300'}`}
               >
-                {/* Icono de comillas */}
                 <div className={`absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity ${isDark ? 'text-purple-300' : 'text-purple-400'}`}>
                   <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>
 
-                {/* Comentario */}
                 <p className={`italic mb-6 text-sm leading-relaxed ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                   &quot;{testimonial.text}&quot;
                 </p>
 
-                {/* Autor */}
                 <div className={`flex items-center gap-3 pt-4 border-t ${isDark ? 'border-purple-500/20' : 'border-purple-100'}`}>
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full blur-md opacity-40 group-hover:opacity-60 transition-opacity"></div>
@@ -262,7 +278,6 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
                   </div>
                 </div>
 
-                {/* Efecto de brillo */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] pointer-events-none rounded-2xl"></div>
               </div>
             ))}
