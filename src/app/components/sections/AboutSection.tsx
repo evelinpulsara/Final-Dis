@@ -48,7 +48,6 @@ export default function AboutSection({
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // ✅ Corregido: usamos el valor actual, no la forma de callback
   const goToPrevImage = () => {
     setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length);
   };
@@ -57,7 +56,6 @@ export default function AboutSection({
     setCurrentImageIndex((currentImageIndex + 1) % images.length);
   };
 
-  // Auto-rotación solo en desktop
   useEffect(() => {
     if (!isMobile) {
       const interval = setInterval(() => {
@@ -94,8 +92,8 @@ export default function AboutSection({
 
           <div className={`${isMobile ? 'w-full mt-8' : 'lg:w-1/2'} relative flex items-center justify-center`}>
             <div className="absolute inset-0 bg-[#DFC3EF] rounded-full blur-3xl opacity-30 transform scale-110" />
-            <div className="relative w-full max-w-xs mx-auto">
-              <div className={`w-full aspect-square sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] relative ${isMobile ? 'mb-4' : ''}`}>
+            <div className="relative w-full max-w-[280px] mx-auto"> {/* 👈 Cambiado de max-w-xs a max-w-[280px] */}
+              <div className={`w-full aspect-square sm:max-w-[280px] md:max-w-[320px] lg:max-w-[480px] relative ${isMobile ? 'mb-4' : ''}`}>
                 {images.map((img, index) => {
                   const offset = (index - currentImageIndex + images.length) % images.length;
                   let transform = '';

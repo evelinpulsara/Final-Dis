@@ -12,11 +12,21 @@ import ContactSection from './components/sections/ContactSection';
 
 export default function PortfolioLanding() {
   const [activeMenu, setActiveMenu] = useState('Sobre mi');
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(false); // 👈 Lo cambiaremos por el modo sistema
   const [menuPosition, setMenuPosition] = useState({ x: 0, width: 0 });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // 👈 Nuevo estado
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // ✅ Detectar modo del sistema
+  useEffect(() => {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setIsDark(true);
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+      setIsDark(event.matches);
+    });
+  }, []);
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'es' ? 'en' : 'es');
@@ -43,7 +53,7 @@ export default function PortfolioLanding() {
   };
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'} transition-colors duration-300`}>
+    <div className={`min-h-screen ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'} transition-colors duration-300 overflow-x-hidden`}>
       <Header
         activeMenu={activeMenu}
         isDark={isDark}
@@ -53,8 +63,8 @@ export default function PortfolioLanding() {
         toggleLanguage={toggleLanguage}
         language={language}
         scrollToSection={scrollToSection}
-        isMenuOpen={isMenuOpen} // 👈 Pasamos el estado
-        setIsMenuOpen={setIsMenuOpen} // 👈 Pasamos la función
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
       />
 
       {/* Hero Section */}
@@ -70,7 +80,7 @@ export default function PortfolioLanding() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 drop-shadow-lg">
-              &quot; Work hard silently, let success make the noise.&quot;
+              "Work hard silently, let success make the noise."
             </h1>
             <div className="inline-block mt-4 px-6 py-2 rounded-full bg-[#D6C8F0]/80 shadow-inner">
               <p className="text-2xl md:text-3xl font-medium text-[#6D5F8B]">Evelin Pulsara</p>

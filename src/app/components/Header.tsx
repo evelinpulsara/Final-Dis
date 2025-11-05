@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import MobileMenu from './MobileMenu'; // 👈 Importamos el nuevo componente
+import MobileMenu from './MobileMenu';
 
 interface HeaderProps {
   activeMenu: string;
@@ -43,7 +43,6 @@ export default function Header({
       <header className={`fixed top-0 left-0 right-0 z-50 ${isDark ? 'bg-[#0F1029]/85' : 'bg-[#F5F3FA]/85'} backdrop-blur-sm shadow-sm w-full`}>
         <nav className="container mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
-            {/* Menú en desktop */}
             <div className="hidden md:flex items-center gap-3 relative">
               <div
                 className="absolute h-10 bg-[#DFC3EF] rounded-full transition-all duration-300 ease-out shadow-inner"
@@ -72,7 +71,6 @@ export default function Header({
               ))}
             </div>
 
-            {/* Icono de menú en móvil */}
             <div className="md:hidden flex items-center gap-4">
               <button
                 onClick={() => setIsMenuOpen(true)}
@@ -115,7 +113,6 @@ export default function Header({
         </nav>
       </header>
 
-      {/* Menú desplegable en móvil */}
       <MobileMenu
         isDark={isDark}
         language={language}
