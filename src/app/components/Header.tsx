@@ -13,8 +13,8 @@ interface HeaderProps {
   toggleLanguage: () => void;
   language: 'es' | 'en';
   scrollToSection: (sectionId: string) => void;
-  isMenuOpen: boolean; // 👈 Recibimos el estado
-  setIsMenuOpen: (open: boolean) => void; // 👈 Recibimos la función
+  isMenuOpen: boolean;
+  setIsMenuOpen: (open: boolean) => void;
 }
 
 export default function Header({
@@ -40,7 +40,7 @@ export default function Header({
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 ${isDark ? 'bg-[#0F1029]/85' : 'bg-[#F5F3FA]/85'} backdrop-blur-sm shadow-sm`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 ${isDark ? 'bg-[#0F1029]/85' : 'bg-[#F5F3FA]/85'} backdrop-blur-sm shadow-sm w-full`}>
         <nav className="container mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             {/* Menú en desktop */}

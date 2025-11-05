@@ -1,7 +1,7 @@
 // app/components/sections/AboutSection.tsx
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface AboutProps {
   isDark: boolean;
@@ -37,21 +37,65 @@ export default function AboutSection({
     '/imagenes/Foto6.jpeg'
   ];
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((currentImageIndex + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [currentImageIndex, images.length, setCurrentImageIndex]);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // ✅ Corregido: usamos el valor actual, no la forma de callback
+  const goToPrevImage = () => {
+    setCurrentImageIndex((currentImageIndex - 1 + images.length) % images.length);
+  };
+
+  const goToNextImage = () => {
+    setCurrentImageIndex((currentImageIndex + 1) % images.length);
+  };
+
+  // Auto-rotación solo en desktop
+  useEffect(() => {
+    if (!isMobile) {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((currentImageIndex + 1) % images.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [currentImageIndex, images.length, setCurrentImageIndex, isMobile]);
 
   return (
-    <section id="sobremi" className="py-20 relative scroll-mt-24">
+    <section id="sobremi" className="py-20 relative">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
-          <div className="lg:w-1/2 relative flex items-center justify-center">
+        <div className={`flex ${isMobile ? 'flex-col' : 'lg:flex-row'} items-center gap-12 max-w-6xl mx-auto`}>
+          <div className={`${isMobile ? 'w-full' : 'lg:w-1/2'} relative`}>
+            <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#DFC3EF] rounded-full opacity-20 blur-2xl" />
+            <div className="relative">
+              {activeMenu === 'Sobre mi' ? (
+                <div className="inline-block mb-6 px-6 py-3 rounded-full font-semibold text-lg bg-[#DFC3EF]/80 text-gray-800 shadow-inner">
+                  {t.title}
+                </div>
+              ) : (
+                <h2 className="text-2xl font-semibold text-gray-800 mb-6">{t.title}</h2>
+              )}
+              <div className={`p-6 rounded-xl shadow-inner ${
+                isDark 
+                  ? 'bg-[#1C1B2E] text-white' 
+                  : 'bg-white text-gray-700'
+              }`}>
+                <p className="mb-6 leading-relaxed">{t.p1}</p>
+                <p className="leading-relaxed">{t.p2}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={`${isMobile ? 'w-full mt-8' : 'lg:w-1/2'} relative flex items-center justify-center`}>
             <div className="absolute inset-0 bg-[#DFC3EF] rounded-full blur-3xl opacity-30 transform scale-110" />
             <div className="relative w-full max-w-xs mx-auto">
-              <div className="w-full aspect-square sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] relative">
+              <div className={`w-full aspect-square sm:max-w-[320px] md:max-w-[400px] lg:max-w-[480px] relative ${isMobile ? 'mb-4' : ''}`}>
                 {images.map((img, index) => {
                   const offset = (index - currentImageIndex + images.length) % images.length;
                   let transform = '';
@@ -86,40 +130,44 @@ export default function AboutSection({
                     </div>
                   );
                 })}
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-40 flex gap-2">
-                  {images.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentImageIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        index === currentImageIndex ? 'bg-purple-400 w-6' : 'bg-gray-300 hover:bg-purple-300'
-                      }`}
-                      aria-label={`Ir a imagen ${index + 1}`}
-                    />
-                  ))}
-                </div>
+                {!isMobile && (
+                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 z-40 flex gap-2">
+                    {images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          index === currentImageIndex ? 'bg-purple-400 w-6' : 'bg-gray-300 hover:bg-purple-300'
+                        }`}
+                        aria-label={`Ir a imagen ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
-          </div>
-          <div className="lg:w-1/2 relative">
-            <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#DFC3EF] rounded-full opacity-20 blur-2xl" />
-            <div className="relative">
-              {/* Título con burbuja SOLO si está activo */}
-              {activeMenu === 'Sobre mi' ? (
-                <div className="inline-block mb-6 px-6 py-3 rounded-full font-semibold text-lg bg-[#DFC3EF]/80 text-gray-800 shadow-inner">
-                  {t.title}
-                </div>
-              ) : (
-                <h2 className="text-2xl font-semibold text-gray-800 mb-6">{t.title}</h2>
-              )}
 
-              {/* Contenedor de texto con sombra interna y fondo correcto */}
-              <div className={`p-6 rounded-xl shadow-inner ${
-                isDark ? 'bg-[#1C1B2E] text-white' : 'bg-white text-gray-700'
-              }`}>
-                <p className="mb-6 leading-relaxed">{t.p1}</p>
-                <p className="leading-relaxed">{t.p2}</p>
-              </div>
+              {isMobile && (
+                <div className="flex justify-between mt-4">
+                  <button
+                    onClick={goToPrevImage}
+                    className={`p-2 rounded-full ${isDark ? 'bg-[#1C1B2E] text-white' : 'bg-white text-gray-800'} shadow-md`}
+                    aria-label="Imagen anterior"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={goToNextImage}
+                    className={`p-2 rounded-full ${isDark ? 'bg-[#1C1B2E] text-white' : 'bg-white text-gray-800'} shadow-md`}
+                    aria-label="Imagen siguiente"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

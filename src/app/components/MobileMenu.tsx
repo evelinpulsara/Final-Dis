@@ -38,8 +38,8 @@ export default function MobileMenu({
   if (!isMenuOpen) return null;
 
   return (
-    <div className={`fixed inset-0 z-50 flex justify-end ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'}`}>
-      <div className={`w-3/4 max-w-sm p-6 ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'}`}>
+    <div className={`fixed inset-0 z-50 flex justify-end ${isDark ? 'bg-[#0F1029]/90' : 'bg-[#F5F3FA]/90'}`}>
+      <div className={`w-3/4 max-w-sm p-6 ${isDark ? 'bg-[#0F1029]/90' : 'bg-[#F5F3FA]/90'}`}>
         <div className="flex justify-between items-center mb-6">
           <button
             onClick={() => setIsMenuOpen(false)}
@@ -84,7 +84,7 @@ export default function MobileMenu({
               onClick={() => {
                 setActiveMenu(item);
                 scrollToSection(['sobremi', 'educacion', 'conocimientos', 'proyectos', 'testimonios', 'contacto'][idx]);
-                setIsMenuOpen(false); // 👈 Cerrar el menú después de hacer click
+                setIsMenuOpen(false);
               }}
               className={`px-4 py-2 rounded-lg text-left transition-colors duration-200 ${
                 activeMenu === item
