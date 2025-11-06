@@ -1,4 +1,7 @@
-import React from 'react';
+// app/components/MobileMenu.tsx
+'use client';
+
+import React, { useState, useRef, useEffect } from 'react';
 
 interface MobileMenuProps {
   isDark: boolean;
@@ -6,7 +9,7 @@ interface MobileMenuProps {
   activeMenu: string;
   setActiveMenu: (menu: string) => void;
   setIsDark: (dark: boolean) => void;
-  toggleLanguage: () => void;
+  setLanguage: (lang: 'es' | 'en') => void; // ✅ Cambiado
   scrollToSection: (sectionId: string) => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (open: boolean) => void;
@@ -18,7 +21,7 @@ export default function MobileMenu({
   activeMenu = 'Sobre mi',
   setActiveMenu = () => {},
   setIsDark = () => {},
-  toggleLanguage = () => {},
+  setLanguage = () => {}, // ✅ Acepta setLanguage
   scrollToSection = () => {},
   isMenuOpen = false,
   setIsMenuOpen = () => {}
@@ -56,6 +59,20 @@ export default function MobileMenu({
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
     </svg>
   ];
+
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
+
+  // Cerrar menú de idioma al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+        setIsLangMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   if (!isMenuOpen) return null;
 
@@ -153,27 +170,65 @@ export default function MobileMenu({
 
           {/* Footer con controles */}
           <div className={`pt-6 mt-6 border-t ${isDark ? 'border-purple-500/20' : 'border-purple-200'}`}>
-            <div className="flex items-center justify-around gap-4">
-              {/* Botón de idioma */}
-              <button
-                onClick={toggleLanguage}
-                className={`flex-1 flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl transition-all duration-300 ${
-                  isDark 
-                    ? 'bg-white/5 text-white hover:bg-white/10 border border-purple-500/20' 
-                    : 'bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200'
-                } hover:scale-105`}
-                aria-label={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                </svg>
-                <span className="font-semibold text-sm">{language === 'es' ? 'EN' : 'ES'}</span>
-              </button>
+            <div className="flex items-center justify-center gap-4">
+              {/* ✅ Menú desplegable de idioma */}
+              <div className="relative" ref={langMenuRef}>
+                <button
+                  onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                  className={`flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl transition-all duration-300 ${
+                    isDark 
+                      ? 'bg-white/5 text-white hover:bg-white/10 border border-purple-500/20' 
+                      : 'bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200'
+                  } hover:scale-105`}
+                  aria-label="Seleccionar idioma"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                  </svg>
+                  <span className="font-semibold text-sm">{language === 'es' ? 'Español' : 'English'}</span>
+                </button>
+
+                {/* Menú desplegable */}
+                {isLangMenuOpen && (
+                  <div className={`absolute bottom-full mb-2 w-36 rounded-xl shadow-lg py-2 z-50 right-0 ${
+                    isDark 
+                      ? 'bg-[#1C1B2E] border border-purple-500/30' 
+                      : 'bg-white border border-purple-200'
+                  }`}>
+                    <button
+                      onClick={() => {
+                        setLanguage('es');
+                        setIsLangMenuOpen(false);
+                      }}
+                      className={`block w-full text-left px-4 py-2 text-sm font-medium ${
+                        language === 'es'
+                          ? 'text-purple-500 font-bold'
+                          : isDark ? 'text-gray-300' : 'text-gray-700'
+                      } hover:${isDark ? 'bg-white/5' : 'bg-purple-50'} transition-colors`}
+                    >
+                      Español
+                    </button>
+                    <button
+                      onClick={() => {
+                        setLanguage('en');
+                        setIsLangMenuOpen(false);
+                      }}
+                      className={`block w-full text-left px-4 py-2 text-sm font-medium ${
+                        language === 'en'
+                          ? 'text-purple-500 font-bold'
+                          : isDark ? 'text-gray-300' : 'text-gray-700'
+                      } hover:${isDark ? 'bg-white/5' : 'bg-purple-50'} transition-colors`}
+                    >
+                      English
+                    </button>
+                  </div>
+                )}
+              </div>
 
               {/* Botón de tema */}
               <button
                 onClick={() => setIsDark(!isDark)}
-                className={`flex-1 flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl transition-all duration-300 ${
+                className={`flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl transition-all duration-300 ${
                   isDark 
                     ? 'bg-white/5 text-white hover:bg-white/10 border border-purple-500/20' 
                     : 'bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200'

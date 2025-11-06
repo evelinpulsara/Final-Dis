@@ -60,7 +60,7 @@ export default function PortfolioLanding() {
         menuPosition={menuPosition}
         setActiveMenu={setActiveMenu}
         setIsDark={setIsDark}
-        toggleLanguage={toggleLanguage}
+        setLanguage={setLanguage} 
         language={language}
         scrollToSection={scrollToSection}
         isMenuOpen={isMenuOpen}

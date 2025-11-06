@@ -29,7 +29,7 @@ export default function AboutSection({
   }[language];
 
   const images = [
-    '/imagenes/Foto4.jpeg',
+    '/imagenes/Foto2.jpeg',
     '/imagenes/Foto5.jpeg',
     '/imagenes/Foto6.jpeg'
   ];
