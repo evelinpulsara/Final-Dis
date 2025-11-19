@@ -87,7 +87,7 @@ export default function HeroSection({
         <div className="max-w-6xl mx-auto text-center space-y-12">
           {/* Título principal con efecto glow */}
           <div className="space-y-4">
-            <h1 className={`text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight ${
+            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-tight tracking-tight ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
               <span className="inline-block animate-fade-in-up bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent" style={{
@@ -109,7 +109,7 @@ export default function HeroSection({
             </h1>
 
             {/* Subtítulo */}
-            <p className={`text-lg md:text-xl lg:text-2xl font-light animate-fade-in-up ${
+            <p className={`text-sm sm:text-lg md:text-xl lg:text-2xl font-light animate-fade-in-up ${
               isDark ? 'text-gray-300' : 'text-gray-700'
             }`} style={{ animationDelay: '0.4s' }}>
               {t.subtitle}
@@ -118,7 +118,7 @@ export default function HeroSection({
 
           {/* Frase motivacional */}
           <div className="animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <div className={`max-w-3xl mx-auto p-8 md:p-10 rounded-3xl ${
+            <div className={`max-w-3xl mx-auto p-6 sm:p-8 md:p-10 rounded-3xl ${
               isDark 
                 ? 'bg-gradient-to-br from-[#1C1B2E]/80 to-[#252341]/80 border border-purple-500/20' 
                 : 'bg-white/80 border border-purple-200'
@@ -132,12 +132,12 @@ export default function HeroSection({
               }`}>&quot;</div>
               
               <blockquote className="relative">
-                <p className={`text-2xl md:text-3xl lg:text-4xl font-semibold italic mb-4 ${
+                <p className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold italic mb-4 ${
                   isDark ? 'text-white' : 'text-gray-900'
                 }`}>
                   {t.quote}
                 </p>
-                <footer className={`text-lg md:text-xl font-medium ${
+                <footer className={`text-base sm:text-lg md:text-xl font-medium ${
                   isDark ? 'text-purple-300' : 'text-purple-600'
                 }`}>
                   — {t.author}
@@ -151,15 +151,15 @@ export default function HeroSection({
             {/* Botón Ver Proyectos */}
             <button
               onClick={() => scrollToSection('proyectos')}
-              className={`group relative px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 ${
+              className={`group relative px-6 sm:px-10 py-3 sm:py-5 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 hover:scale-105 ${
                 isDark
                   ? 'bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 text-white shadow-2xl hover:shadow-fuchsia-500/50'
                   : 'bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 text-white shadow-2xl hover:shadow-fuchsia-400/50'
               }`}
             >
-              <span className="relative z-10 flex items-center gap-3">
+              <span className="relative z-10 flex items-center gap-2 sm:gap-3">
                 {t.viewProjects}
-                <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
@@ -169,15 +169,15 @@ export default function HeroSection({
             {/* Botón Descargar CV */}
             <button
               onClick={handleDownloadCV}
-              className={`group relative px-10 py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 ${
+              className={`group relative px-6 sm:px-10 py-3 sm:py-5 rounded-2xl font-bold text-base sm:text-lg transition-all duration-300 hover:scale-105 ${
                 isDark
                   ? 'bg-white/5 text-white border-2 border-fuchsia-400 hover:bg-gradient-to-r hover:from-purple-600 hover:via-fuchsia-500 hover:to-pink-500 hover:border-transparent shadow-xl'
                   : 'bg-white/80 text-gray-900 border-2 border-fuchsia-400 hover:bg-gradient-to-r hover:from-purple-500 hover:via-fuchsia-500 hover:to-pink-500 hover:text-white hover:border-transparent shadow-xl'
               } backdrop-blur-sm`}
             >
-              <span className="relative z-10 flex items-center gap-3">
+              <span className="relative z-10 flex items-center gap-2 sm:gap-3">
                 {t.downloadCV}
-                <svg className="w-6 h-6 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </span>
@@ -185,12 +185,12 @@ export default function HeroSection({
           </div>
 
           {/* Indicador de scroll */}
-          <div className="pt-12 animate-bounce" style={{ animationDelay: '1s' }}>
+          <div className="pt-8 sm:pt-12 animate-bounce" style={{ animationDelay: '1s' }}>
             <div className="flex flex-col items-center gap-3">
-              <p className={`text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              <p className={`text-xs sm:text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 {t.scroll}
               </p>
-              <svg className={`w-6 h-6 ${isDark ? 'text-fuchsia-400' : 'text-fuchsia-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-5 h-5 sm:w-6 sm:h-6 ${isDark ? 'text-fuchsia-400' : 'text-fuchsia-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </div>
