@@ -51,7 +51,8 @@ export default function HeroSection({
       isDark 
         ? 'bg-gradient-to-br from-[#0F1029] via-[#1a1642] to-[#0F1029]' 
         : 'bg-gradient-to-br from-purple-100 via-pink-100 to-purple-200'
-    }`}>
+    } pt-20 md:pt-32`} // ✅ AÑADIDO: padding-top para evitar que el header lo tape
+    >
       {/* Efectos de fondo decorativos */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Círculos con blur */}

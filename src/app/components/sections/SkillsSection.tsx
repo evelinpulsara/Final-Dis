@@ -14,19 +14,16 @@ export default function SkillsSection({ isDark = false, language = 'es', activeM
         {
           title: 'Java',
           desc: 'Tengo conocimientos en programación orientada a objetos, creación de aplicaciones y estructuras de datos. He trabajado en proyectos académicos donde implementé sistemas de gestión y bases de datos, aplicando buenas prácticas de desarrollo.',
-          level: 75,
           tags: ['POO', 'Spring Boot', 'Bases de Datos']
         },
         {
           title: 'Python',
           desc: 'Uso Python para resolver problemas, practicar algoritmos y trabajar con estructuras de datos. También lo empleo en proyectos de automatización y ejercicios que fortalecen mi lógica de programación.',
-          level: 70,
           tags: ['Algoritmos', 'Automatización', 'Data Structures']
         },
         {
           title: 'Unity',
           desc: 'Me interesa el desarrollo de videojuegos y la creación de experiencias interactivas. He practicado con Unity para aprender sobre diseño de entornos, animaciones y lógica de interacción dentro de juegos.',
-          level: 60,
           tags: ['Game Dev', 'C#', 'Diseño 3D']
         },
       ]
@@ -37,7 +34,6 @@ export default function SkillsSection({ isDark = false, language = 'es', activeM
         {
           title: 'Java',
           desc: 'I have knowledge in object-oriented programming, application development, and data structures. I have worked on academic projects implementing management systems and databases, applying good development practices.',
-          level: 75,
           tags: ['OOP', 'Spring Boot', 'Databases']
         },
         {
@@ -49,7 +45,6 @@ export default function SkillsSection({ isDark = false, language = 'es', activeM
         {
           title: 'Unity',
           desc: 'I am interested in video game development and creating interactive experiences. I have practiced with Unity to learn about environment design, animations, and interaction logic within games.',
-          level: 60,
           tags: ['Game Dev', 'C#', '3D Design']
         },
       ]
@@ -126,19 +121,13 @@ export default function SkillsSection({ isDark = false, language = 'es', activeM
 
                     {/* Contenido */}
                     <div className="flex-1 space-y-4">
-                      {/* Header con título y nivel */}
+                      {/* Header con título */}
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                         <h3 className={`text-2xl md:text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} group-hover:bg-gradient-to-r group-hover:${colors.gradient} group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300`}>
                           {item.title}
                         </h3>
                         
-                        {/* Badge de nivel */}
-                        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${colors.bg} border ${colors.border}`}>
-                          <svg className={`w-4 h-4 ${colors.text}`} fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                          <span className={`text-sm font-bold ${colors.text}`}>{item.level}%</span>
-                        </div>
+                        {/* ✅ Eliminado: Badge de nivel (porcentaje) */}
                       </div>
 
                       {/* Descripción */}
@@ -146,16 +135,8 @@ export default function SkillsSection({ isDark = false, language = 'es', activeM
                         {item.desc}
                       </p>
 
-                      {/* Barra de progreso */}
-                      <div className="space-y-2">
-                        <div className={`h-2 rounded-full overflow-hidden ${isDark ? 'bg-white/5' : 'bg-gray-200'}`}>
-                          <div 
-                            className={`h-full bg-gradient-to-r ${colors.gradient} rounded-full transition-all duration-1000 ease-out`}
-                            style={{ width: `${item.level}%` }}
-                          ></div>
-                        </div>
-                      </div>
-
+                      {/* ✅ Eliminado: Barra de progreso */}
+                      
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2">
                         {item.tags.map((tag, tagIdx) => (
