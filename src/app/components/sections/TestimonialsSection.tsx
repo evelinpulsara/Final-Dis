@@ -13,50 +13,34 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
   const t = {
     es: {
       title: 'Testimonios',
-      addTestimonial: 'Agregar testimonio',
-      yourName: 'Tu nombre',
-      yourRole: 'Tu rol/cargo',
-      yourComment: 'Tu comentario',
-      photoUpload: 'Sube tu foto (opcional)',
-      submit: 'Enviar testimonio',
-      cancel: 'Cancelar'
     },
     en: {
       title: 'Testimonials',
-      addTestimonial: 'Add testimonial',
-      yourName: 'Your name',
-      yourRole: 'Your role/position',
-      yourComment: 'Your comment',
-      photoUpload: 'Upload your photo (optional)',
-      submit: 'Submit testimonial',
-      cancel: 'Cancel'
     }
   }[language];
 
-  // ✅ Testimonios con fotos locales (desde /public/images/testimonios/)
+  // ✅ Testimonios con URLs públicas (reemplaza con tus enlaces reales)
   const testimonials = [
     { 
       text: 'Evelin es una persona amable, trabajadora y siempre dispuesta a aportar al equipo. Su compromiso y organización hacen que trabajar con ella sea una experiencia muy positiva', 
-      name: 'Jesus Villota', 
+      name: 'Jesús Villota', 
       role: 'Docente',
       date: '15/04/2025',
-      photo: '/images/testimonios/Jesus.jpeg' // ✅ Ruta local
+      photo: 'https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/490456940_2153213061815479_3047568798975589192_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=JOMYmerJaIEQ7kNvwH4tHEN&_nc_oc=AdnauNT5e5Wu5t55MVVKcNHqd-9HflwAUDtERK6pFaPzUpI9Hnnk8g4uWM5xZLVHu_s&_nc_zt=23&_nc_ht=scontent-bog2-2.xx&_nc_gid=xVwpL5WhsSgXcBH2TGusoQ&oh=00_AfhH5FBW9DJ5cmQzLrJY8bIU7AUjZWa7UNy0xVgfNR9ucA&oe=692399E7' // 🔁 Reemplaza con URL real
     },
-
     { 
       text: 'Considero que la señorita Evelin Pulsara destaca por su sentido estético y su compromiso con ofrecer experiencias siempre agradables, visuales y responsivas a sus usuarios.', 
       name: 'Emanuel Castillo', 
       role: 'Docente',
       date: '15/04/2025',
-      photo: '/images/testimonios/andrea.jpg' // ✅ Ruta local
+      photo: 'https://i.imgur.com/placeholder2.jpg' // 🔁 Reemplaza con URL real
     },
-
     { 
       text: 'Demuestra gran dedicación en cada proyecto, siempre busca soluciones creativas y bien estructuradas.', 
-      name: 'Luna Martinez', 
+      name: 'Luna Martínez', 
       role: 'Docente',
       date: '15/04/2025',
-      photo: '/images/testimonios/andrea.jpg' // ✅ Ruta local
+      photo: 'https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/462879777_1471910340184735_3908539054277784418_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Bd6gji2UTLoQ7kNvwE9vPGA&_nc_oc=AdmfzCxQLfMv8wdR6AD8u-VuKoX5drLRtuvVGos5OMhBmdxs0UiXVQeCj7MC3wH_n8c&_nc_zt=23&_nc_ht=scontent-bog2-2.xx&_nc_gid=FRdjJ6nDkkBVFR_EgS05_w&oh=00_AfhgD2G_ib7GJVMAUXV8B_CwrQn9HpFTTQeF8xVPC28JNA&oe=6923A738' // 🔁 Reemplaza con URL real
     },
   ];
 
@@ -83,8 +67,6 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
             <div className={`w-20 h-1 mx-auto mt-4 rounded-full ${isDark ? 'bg-gradient-to-r from-purple-500 to-pink-500' : 'bg-gradient-to-r from-purple-400 to-pink-400'}`}></div>
           </div>
 
-          {/* ✅ Eliminado: Botón para agregar testimonio y formulario */}
-          
           {/* Grid de testimonios */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, idx) => (
