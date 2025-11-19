@@ -15,7 +15,7 @@ export default function HeroSection({
     es: {
       title1: 'DESARROLLADORA',
       title2: 'DE SOFTWARE',
-      subtitle: 'Especializado en crear soluciones innovadoras con tecnologías modernas.',
+      subtitle: 'Construyendo mi camino, una línea de código a la vez.',
       quote: 'Trabaja duro, en silencio, deja que el éxito haga ruido.',
       author: 'Evelin Pulsara',
       viewProjects: 'Ver proyectos',
@@ -25,7 +25,7 @@ export default function HeroSection({
     en: {
       title1: 'SOFTWARE',
       title2: 'DEVELOPER',
-      subtitle: 'Specialized in creating innovative solutions with modern technologies.',
+      subtitle: 'Building my path, one line of code at a time.',
       quote: 'Work hard, silently, let success make the noise.',
       author: 'Evelin Pulsara',
       viewProjects: 'View projects',
