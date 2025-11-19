@@ -256,11 +256,8 @@ export default function MobileMenu({
 
             {/* Firma */}
             <div className="mt-6 text-center">
-              <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                Made with <span className="text-red-500 animate-pulse">❤️</span> by
-              </p>
               <p className={`text-base font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent`}>
-                Evelin Pulsara
+                 Made by Evelin Pulsara
               </p>
             </div>
           </div>

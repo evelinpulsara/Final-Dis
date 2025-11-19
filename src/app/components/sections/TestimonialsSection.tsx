@@ -26,21 +26,21 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
       name: 'Jesús Villota', 
       role: 'Compañero',
       date: '15/04/2025',
-      photo: 'https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/490456940_2153213061815479_3047568798975589192_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=JOMYmerJaIEQ7kNvwH4tHEN&_nc_oc=AdnauNT5e5Wu5t55MVVKcNHqd-9HflwAUDtERK6pFaPzUpI9Hnnk8g4uWM5xZLVHu_s&_nc_zt=23&_nc_ht=scontent-bog2-2.xx&_nc_gid=xVwpL5WhsSgXcBH2TGusoQ&oh=00_AfhH5FBW9DJ5cmQzLrJY8bIU7AUjZWa7UNy0xVgfNR9ucA&oe=692399E7' // 🔁 Reemplaza con URL real
+      photo: 'https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/490456940_2153213061815479_3047568798975589192_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=JOMYmerJaIEQ7kNvwH4tHEN&_nc_oc=AdnauNT5e5Wu5t55MVVKcNHqd-9HflwAUDtERK6pFaPzUpI9Hnnk8g4uWM5xZLVHu_s&_nc_zt=23&_nc_ht=scontent-bog2-2.xx&_nc_gid=xVwpL5WhsSgXcBH2TGusoQ&oh=00_AfhH5FBW9DJ5cmQzLrJY8bIU7AUjZWa7UNy0xVgfNR9ucA&oe=692399E7' 
     },
     { 
       text: 'Considero que la señorita Evelin Pulsara destaca por su sentido estético y su compromiso con ofrecer experiencias siempre agradables, visuales y responsivas a sus usuarios.', 
-      name: 'Emanuel Castillo', 
+      name: 'Estevan Meneses', 
       role: 'Compañero',
       date: '15/04/2025',
-      photo: 'https://i.imgur.com/placeholder2.jpg' // 🔁 Reemplaza con URL real
+      photo: 'https://scontent-bog2-1.xx.fbcdn.net/v/t39.30808-6/477576435_9477768012281724_7312792265036718237_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=H93BoIJ_L9sQ7kNvwHgP09Z&_nc_oc=Adk0_MxZ9u9SMHsL72nu7-UgJwcXd9LDprdl9GHcrB5IBVjDj8cFWka3UgRH4LQ_2J0&_nc_zt=23&_nc_ht=scontent-bog2-1.xx&_nc_gid=xJ4JzrdDgcIgYvcWJ0WLdg&oh=00_AfjndK0G4pePtVx5R4xz5PVcHvzzrDNZT3GNBNhN-VG3Rw&oe=6923920D' 
     },
     { 
       text: 'Demuestra gran dedicación en cada proyecto, siempre busca soluciones creativas y bien estructuradas.', 
-      name: 'Luna Martínez', 
+      name: 'Sara Martínez', 
       role: 'Compañero',
       date: '15/04/2025',
-      photo: 'https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/462879777_1471910340184735_3908539054277784418_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Bd6gji2UTLoQ7kNvwE9vPGA&_nc_oc=AdmfzCxQLfMv8wdR6AD8u-VuKoX5drLRtuvVGos5OMhBmdxs0UiXVQeCj7MC3wH_n8c&_nc_zt=23&_nc_ht=scontent-bog2-2.xx&_nc_gid=FRdjJ6nDkkBVFR_EgS05_w&oh=00_AfhgD2G_ib7GJVMAUXV8B_CwrQn9HpFTTQeF8xVPC28JNA&oe=6923A738' // 🔁 Reemplaza con URL real
+      photo: 'https://scontent-bog2-2.xx.fbcdn.net/v/t39.30808-6/462879777_1471910340184735_3908539054277784418_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Bd6gji2UTLoQ7kNvwE9vPGA&_nc_oc=AdmfzCxQLfMv8wdR6AD8u-VuKoX5drLRtuvVGos5OMhBmdxs0UiXVQeCj7MC3wH_n8c&_nc_zt=23&_nc_ht=scontent-bog2-2.xx&_nc_gid=FRdjJ6nDkkBVFR_EgS05_w&oh=00_AfhgD2G_ib7GJVMAUXV8B_CwrQn9HpFTTQeF8xVPC28JNA&oe=6923A738' 
     },
   ];
 
