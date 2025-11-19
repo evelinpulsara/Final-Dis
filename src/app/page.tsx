@@ -13,7 +13,7 @@ import ContactSection from './components/sections/ContactSection';
 
 export default function PortfolioLanding() {
   const [activeMenu, setActiveMenu] = useState('Sobre mi');
-  const [isDark, setIsDark] = useState(false); 
+  const [isDark, setIsDark] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, width: 0 });
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [language, setLanguage] = useState<'es' | 'en'>('es');
@@ -24,9 +24,10 @@ export default function PortfolioLanding() {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       setIsDark(true);
     }
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-      setIsDark(event.matches);
-    });
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => setIsDark(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   const toggleLanguage = () => {
@@ -55,6 +56,9 @@ export default function PortfolioLanding() {
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'} transition-colors duration-300 overflow-x-hidden`}>
+      
+      {/* ✅ AÑADIDO: HeadSection ahora SÍ se renderiza */}
+
       <Header
         activeMenu={activeMenu}
         isDark={isDark}
@@ -67,6 +71,12 @@ export default function PortfolioLanding() {
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
+      <HeadSection
+        isDark={isDark}
+        language={language}
+        scrollToSection={scrollToSection}
+      />
+
       <AboutSection
         isDark={isDark}
         language={language}
