@@ -89,7 +89,7 @@ export default function MobileMenu({
 
       {/* Panel deslizante */}
       <div 
-        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-xs h-[80vh] transform transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-xs h-[80vh] transform transition-transform duration-300 ease-out rounded-l-2xl ${
           isDark 
             ? 'bg-gradient-to-b from-[#0F1029] to-[#1a1642]' 
             : 'bg-gradient-to-b from-white to-purple-50'
