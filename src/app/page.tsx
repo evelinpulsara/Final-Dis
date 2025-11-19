@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Header from './components/Header';
+import MobileMenu from './components/MobileMenu'; 
 import HeadSection from './components/sections/HeadSection';
 import AboutSection from './components/sections/AboutSection';
 import EducationSection from './components/sections/EducationSection';
@@ -19,13 +20,10 @@ export default function PortfolioLanding() {
   const [language, setLanguage] = useState<'es' | 'en'>('es');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // ✅ Detectar modo del sistema
   useEffect(() => {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setIsDark(true);
-    }
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e: MediaQueryListEvent) => setIsDark(e.matches);
+    setIsDark(mediaQuery.matches);
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
@@ -56,9 +54,8 @@ export default function PortfolioLanding() {
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-[#0F1029]' : 'bg-[#F5F3FA]'} transition-colors duration-300 overflow-x-hidden`}>
-      
-      {/* ✅ AÑADIDO: HeadSection ahora SÍ se renderiza */}
 
+      {/* ✅ Header */}
       <Header
         activeMenu={activeMenu}
         isDark={isDark}
@@ -71,12 +68,29 @@ export default function PortfolioLanding() {
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
       />
+
+      {/* ✅ MobileMenu: debe estar aquí */}
+      <MobileMenu
+        isDark={isDark}
+        language={language}
+        activeMenu={activeMenu}
+        setActiveMenu={setActiveMenu}
+        setIsDark={setIsDark}
+        setLanguage={setLanguage}
+        scrollToSection={scrollToSection}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
+
+      {/* ✅ HeadSection: solo sus props */}
       <HeadSection
         isDark={isDark}
         language={language}
         scrollToSection={scrollToSection}
+        // Añade más props SOLO si HeadSection las requiere
       />
 
+      {/* Secciones */}
       <AboutSection
         isDark={isDark}
         language={language}

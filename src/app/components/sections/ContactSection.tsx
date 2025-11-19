@@ -246,13 +246,6 @@ export default function ContactSection({ isDark = false, language = 'es', active
                 <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'} text-center md:text-left`}>
                   © {new Date().getFullYear()} Evelin Pulsara. {t.footer.allRights}.
                 </p>
-
-                {/* Hecho con amor */}
-                <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'} flex items-center gap-2`}>
-                  {t.footer.madeWith}
-                  <span className="text-red-500 animate-pulse">❤️</span>
-                  {t.footer.by} Evelin
-                </p>
               </div>
             </div>
           </div>
