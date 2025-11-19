@@ -12,12 +12,12 @@ export default function EducationSection({ isDark = false, language = 'es', acti
       title: 'Educación',
       items: [
         { 
-          title: 'Técnico en sistemas', 
-          status: 'Terminado', 
-          org: 'SistemPlus', 
-          date: '2020 - 2022',
-          link: 'https://systemplus.tech',
-          description: 'Formación técnica en sistemas computacionales y redes'
+          title: 'Ingeniería de software', 
+          status: 'Activo', 
+          org: 'Universidad Cooperativa', 
+          date: '2023 - Presente',
+          link: 'https://ucc.edu.co',
+          description: 'Carrera profesional en desarrollo de software'
         },
         { 
           title: 'Técnico en electrónica', 
@@ -28,12 +28,12 @@ export default function EducationSection({ isDark = false, language = 'es', acti
           description: 'Especialización en circuitos y sistemas electrónicos'
         },
         { 
-          title: 'Ingeniería de software', 
-          status: 'Activo', 
-          org: 'Universidad Cooperativa', 
-          date: '2023 - Presente',
-          link: 'https://ucc.edu.co',
-          description: 'Carrera profesional en desarrollo de software'
+          title: 'Técnico en sistemas', 
+          status: 'Terminado', 
+          org: 'SistemPlus', 
+          date: '2020 - 2022',
+          link: 'https://systemplus.tech',
+          description: 'Formación técnica en sistemas computacionales y redes'
         },
       ]
     },
@@ -41,12 +41,12 @@ export default function EducationSection({ isDark = false, language = 'es', acti
       title: 'Education',
       items: [
         { 
-          title: 'Systems Technician', 
-          status: 'Completed', 
-          org: 'SistemPlus', 
-          date: '2020 - 2022',
-          link: 'https://systemplus.tech',
-          description: 'Technical training in computer systems and networks'
+          title: 'Software Engineering', 
+          status: 'Active', 
+          org: 'Universidad Cooperativa', 
+          date: '2023 - Present',
+          link: 'https://ucc.edu.co',
+          description: 'Professional career in software development'
         },
         { 
           title: 'Electronics Technician', 
@@ -57,12 +57,12 @@ export default function EducationSection({ isDark = false, language = 'es', acti
           description: 'Specialization in circuits and electronic systems'
         },
         { 
-          title: 'Software Engineering', 
-          status: 'Active', 
-          org: 'Universidad Cooperativa', 
-          date: '2023 - Present',
-          link: 'https://ucc.edu.co',
-          description: 'Professional career in software development'
+          title: 'Systems Technician', 
+          status: 'Completed', 
+          org: 'SistemPlus', 
+          date: '2020 - 2022',
+          link: 'https://systemplus.tech',
+          description: 'Technical training in computer systems and networks'
         },
       ]
     }
@@ -133,10 +133,10 @@ export default function EducationSection({ isDark = false, language = 'es', acti
                               <img
                                 src={
                                   idx === 0
-                                    ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnKbc9YpxUwySM6rEAv_K3jfJgW6lZDtglGw&s"
+                                    ? "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/U._Cooperativa_de_Colombia_logo.svg/2276px-U._Cooperativa_de_Colombia_logo.svg.png"
                                     : idx === 1
                                       ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVTULg_1QeoH6jdICwT-C1bj7VMJU9sXCg8g&s"
-                                      : "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/U._Cooperativa_de_Colombia_logo.svg/2276px-U._Cooperativa_de_Colombia_logo.svg.png"
+                                      : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnKbc9YpxUwySM6rEAv_K3jfJgW6lZDtglGw&s"
                                 }
                                 alt={`Logo ${item.org}`}
                                 className="w-full h-full object-contain"
