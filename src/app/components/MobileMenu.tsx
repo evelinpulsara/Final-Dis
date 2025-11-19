@@ -89,7 +89,7 @@ export default function MobileMenu({
 
       {/* Panel deslizante */}
       <div 
-        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-sm transform transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 bottom-0 z-50 w-full max-w-xs h-[80vh] transform transition-transform duration-300 ease-out ${
           isDark 
             ? 'bg-gradient-to-b from-[#0F1029] to-[#1a1642]' 
             : 'bg-gradient-to-b from-white to-purple-50'
@@ -102,11 +102,11 @@ export default function MobileMenu({
         </div>
 
         {/* Contenido */}
-        <div className="relative h-full flex flex-col p-6">
+        <div className="relative h-full flex flex-col p-4"> {/* ✅ Reducido padding */}
           {/* Header */}
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-6">
             <div>
-              <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <h2 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 {t.title}
               </h2>
               <div className="w-12 h-1 mt-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
@@ -114,7 +114,7 @@ export default function MobileMenu({
             
             <button
               onClick={() => setIsMenuOpen(false)}
-              className={`p-2.5 rounded-xl transition-all duration-300 ${
+              className={`p-2 rounded-xl transition-all duration-300 ${
                 isDark 
                   ? 'text-white hover:bg-white/10 border border-purple-500/20' 
                   : 'text-gray-700 hover:bg-purple-50 border border-purple-100'
@@ -137,7 +137,7 @@ export default function MobileMenu({
                   scrollToSection(['sobremi', 'educacion', 'conocimientos', 'proyectos', 'testimonios', 'contacto'][idx]);
                   setIsMenuOpen(false);
                 }}
-                className={`group w-full flex items-center gap-4 px-5 py-4 rounded-xl text-left transition-all duration-300 ${
+                className={`group w-full flex items-center gap-4 px-4 py-3 rounded-xl text-left transition-all duration-300 ${
                   activeMenu === item
                     ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg scale-105'
                     : isDark 
@@ -170,13 +170,13 @@ export default function MobileMenu({
           </nav>
 
           {/* Footer con controles */}
-          <div className={`pt-6 mt-6 border-t ${isDark ? 'border-purple-500/20' : 'border-purple-200'}`}>
+          <div className={`pt-4 mt-4 border-t ${isDark ? 'border-purple-500/20' : 'border-purple-200'}`}>
             <div className="flex items-center justify-center gap-4">
               {/* Menú desplegable de idioma */}
               <div className="relative" ref={langMenuRef}>
                 <button
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                  className={`flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl transition-all duration-300 ${
+                  className={`flex items-center justify-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                     isDark 
                       ? 'bg-white/5 text-white hover:bg-white/10 border border-purple-500/20' 
                       : 'bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200'
@@ -229,7 +229,7 @@ export default function MobileMenu({
               {/* Botón de tema */}
               <button
                 onClick={() => setIsDark(!isDark)}
-                className={`flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl transition-all duration-300 ${
+                className={`flex items-center justify-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                   isDark 
                     ? 'bg-white/5 text-white hover:bg-white/10 border border-purple-500/20' 
                     : 'bg-purple-50 text-purple-700 hover:bg-purple-100 border border-purple-200'
@@ -255,9 +255,9 @@ export default function MobileMenu({
             </div>
 
             {/* Firma */}
-            <div className="mt-6 text-center">
-              <p className={`text-base font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent`}>
-                 Made by Evelin Pulsara
+            <div className="mt-4 text-center">
+              <p className={`text-sm font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent`}>
+                Made by Evelin Pulsara
               </p>
             </div>
           </div>
