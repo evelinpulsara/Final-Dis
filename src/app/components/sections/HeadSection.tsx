@@ -13,7 +13,7 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const t = {
     es: {
-      title1: 'DESARROLLADOR',
+      title1: 'DESARROLLADORA',
       title2: 'DE SOFTWARE',
       subtitle: 'Especializado en crear soluciones innovadoras con tecnologías modernas.',
       quote: 'Trabaja duro, en silencio, deja que el éxito haga ruido.',
@@ -128,7 +128,7 @@ export default function HeroSection({
               {/* Comillas decorativas */}
               <div className={`absolute top-4 left-4 text-6xl opacity-20 ${
                 isDark ? 'text-fuchsia-400' : 'text-fuchsia-400'
-              }`}>"</div>
+              }`}>&quot;</div>
               
               <blockquote className="relative">
                 <p className={`text-2xl md:text-3xl lg:text-4xl font-semibold italic mb-4 ${
