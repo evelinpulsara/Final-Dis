@@ -1,7 +1,7 @@
 // app/components/sections/TestimonialsSection.tsx
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 
 interface TestimonialsProps {
   isDark: boolean;
@@ -10,37 +10,6 @@ interface TestimonialsProps {
 }
 
 export default function TestimonialsSection({ isDark = false, language = 'es', activeMenu = '' }: TestimonialsProps) {
-  const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    role: '',
-    comment: '',
-    photo: '' // seguirá siendo una string (URL de datos)
-  });
-  const [testimonials, setTestimonials] = useState([
-    { 
-      text: 'Demuestra gran dedicación en cada proyecto, siempre busca soluciones creativas y bien estructuradas.', 
-      name: 'Andrea López', 
-      role: 'Docente',
-      date: '15/04/2025',
-      photo: 'https://randomuser.me/api/portraits/women/30.jpg'
-    },
-    { 
-      text: 'Trabajar con ella en equipo es inspirador; aporta ideas claras y mantiene una actitud positiva y profesional.', 
-      name: 'Carlos Mendoza', 
-      role: 'Compañero',
-      date: '02/05/2025',
-      photo: 'https://randomuser.me/api/portraits/men/31.jpg'
-    },
-    { 
-      text: 'Tiene la habilidad de unir lo técnico con lo humano, logrando resultados sólidos y con valor práctico.', 
-      name: 'Laura Jiménez', 
-      role: 'Profesora',
-      date: '20/05/2025',
-      photo: 'https://randomuser.me/api/portraits/women/32.jpg'
-    },
-  ]);
-
   const t = {
     es: {
       title: 'Testimonios',
@@ -64,36 +33,32 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
     }
   }[language];
 
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (event.target?.result) {
-          setFormData({ ...formData, photo: event.target.result as string });
-        }
-      };
-      reader.readAsDataURL(file);
-    } else {
-      // Si no hay archivo, limpiamos el campo
-      setFormData({ ...formData, photo: '' });
-    }
-  };
+  // ✅ Testimonios con fotos locales (desde /public/images/testimonios/)
+  const testimonials = [
+    { 
+      text: 'Evelin es una persona amable, trabajadora y siempre dispuesta a aportar al equipo. Su compromiso y organización hacen que trabajar con ella sea una experiencia muy positiva', 
+      name: 'Jesus Villota', 
+      role: 'Docente',
+      date: '15/04/2025',
+      photo: '/images/testimonios/Jesus.jpeg' // ✅ Ruta local
+    },
 
-  const handleSubmit = () => {
-    if (formData.name && formData.comment) {
-      const newTestimonial = {
-        text: formData.comment,
-        name: formData.name,
-        role: formData.role || 'Colaborador',
-        date: new Date().toLocaleDateString('es-ES'),
-        photo: formData.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(formData.name)}&background=B18BE8&color=fff`
-      };
-      setTestimonials([...testimonials, newTestimonial]);
-      setFormData({ name: '', role: '', comment: '', photo: '' });
-      setShowForm(false);
-    }
-  };
+    { 
+      text: 'Considero que la señorita Evelin Pulsara destaca por su sentido estético y su compromiso con ofrecer experiencias siempre agradables, visuales y responsivas a sus usuarios.', 
+      name: 'Emanuel Castillo', 
+      role: 'Docente',
+      date: '15/04/2025',
+      photo: '/images/testimonios/andrea.jpg' // ✅ Ruta local
+    },
+
+    { 
+      text: 'Demuestra gran dedicación en cada proyecto, siempre busca soluciones creativas y bien estructuradas.', 
+      name: 'Luna Martinez', 
+      role: 'Docente',
+      date: '15/04/2025',
+      photo: '/images/testimonios/andrea.jpg' // ✅ Ruta local
+    },
+  ];
 
   return (
     <section id="testimonios" className={`py-20 ${isDark ? 'bg-gradient-to-b from-[#1a1642] to-[#0F1029]' : 'bg-gradient-to-b from-white to-[#F5F3FA]'} scroll-mt-24`}>
@@ -118,123 +83,8 @@ export default function TestimonialsSection({ isDark = false, language = 'es', a
             <div className={`w-20 h-1 mx-auto mt-4 rounded-full ${isDark ? 'bg-gradient-to-r from-purple-500 to-pink-500' : 'bg-gradient-to-r from-purple-400 to-pink-400'}`}></div>
           </div>
 
-          {/* Botón para agregar testimonio */}
-          <div className="flex justify-center mb-8">
-            <button
-              onClick={() => setShowForm(!showForm)}
-              className={`group flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                isDark
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 shadow-lg hover:shadow-xl hover:shadow-purple-500/50'
-                  : 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 shadow-md hover:shadow-lg'
-              }`}
-            >
-              <svg className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-              </svg>
-              {t.addTestimonial}
-            </button>
-          </div>
-
-          {/* Formulario para agregar testimonio */}
-          {showForm && (
-            <div className={`mb-12 p-8 rounded-2xl transition-all duration-300 ${
-              isDark 
-                ? 'bg-gradient-to-br from-[#1C1B2E] to-[#252341] shadow-2xl border border-purple-500/20' 
-                : 'bg-white shadow-xl border border-purple-100'
-            }`}>
-              <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className={`block text-sm font-semibold mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                      {t.yourName} *
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className={`w-full px-4 py-3 rounded-lg transition-all duration-200 ${
-                        isDark
-                          ? 'bg-white/5 border border-purple-500/30 text-white focus:border-purple-500 focus:bg-white/10'
-                          : 'bg-purple-50 border border-purple-200 text-gray-900 focus:border-purple-500 focus:bg-white'
-                      } outline-none`}
-                      placeholder="Ej: Juan Pérez"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className={`block text-sm font-semibold mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                      {t.yourRole}
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.role}
-                      onChange={(e) => setFormData({...formData, role: e.target.value})}
-                      className={`w-full px-4 py-3 rounded-lg transition-all duration-200 ${
-                        isDark
-                          ? 'bg-white/5 border border-purple-500/30 text-white focus:border-purple-500 focus:bg-white/10'
-                          : 'bg-purple-50 border border-purple-200 text-gray-900 focus:border-purple-500 focus:bg-white'
-                      } outline-none`}
-                      placeholder="Ej: Desarrollador"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className={`block text-sm font-semibold mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                    {t.yourComment} *
-                  </label>
-                  <textarea
-                    value={formData.comment}
-                    onChange={(e) => setFormData({...formData, comment: e.target.value})}
-                    rows={4}
-                    className={`w-full px-4 py-3 rounded-lg transition-all duration-200 resize-none ${
-                      isDark
-                        ? 'bg-white/5 border border-purple-500/30 text-white focus:border-purple-500 focus:bg-white/10'
-                        : 'bg-purple-50 border border-purple-200 text-gray-900 focus:border-purple-500 focus:bg-white'
-                    } outline-none`}
-                    placeholder="Comparte tu experiencia trabajando conmigo..."
-                  />
-                </div>
-
-                {/* ✅ Cambiado: ahora es un input de tipo file */}
-                <div>
-                  <label className={`block text-sm font-semibold mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                    {t.photoUpload}
-                  </label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handlePhotoChange}
-                    className={`w-full px-4 py-3 rounded-lg transition-all duration-200 ${
-                      isDark
-                        ? 'bg-white/5 border border-purple-500/30 text-white focus:border-purple-500 focus:bg-white/10 file:bg-transparent file:text-white file:border-0'
-                        : 'bg-purple-50 border border-purple-200 text-gray-900 focus:border-purple-500 focus:bg-white file:bg-transparent file:text-gray-900 file:border-0'
-                    } outline-none`}
-                  />
-                </div>
-
-                <div className="flex gap-4">
-                  <button
-                    onClick={handleSubmit}
-                    className="flex-1 px-6 py-3 rounded-lg font-semibold bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    {t.submit}
-                  </button>
-                  <button
-                    onClick={() => setShowForm(false)}
-                    className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                      isDark
-                        ? 'bg-white/10 text-white hover:bg-white/20'
-                        : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
-                    }`}
-                  >
-                    {t.cancel}
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-
+          {/* ✅ Eliminado: Botón para agregar testimonio y formulario */}
+          
           {/* Grid de testimonios */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, idx) => (

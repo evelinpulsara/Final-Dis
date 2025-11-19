@@ -35,7 +35,7 @@ export default function HeroSection({
   }[language];
 
   // URL de tu CV - Reemplaza con la ruta real de tu archivo CV
-  const cvUrl = '/cv/Evelin-Pulsara-CV.pdf';
+  const cvUrl = '/cv/CV Evelin.pdf';
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
